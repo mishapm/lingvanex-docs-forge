@@ -49,10 +49,7 @@ export function DocumentationNavigation({ currentPath, onNavigate }: Documentati
           >
             <div className="flex items-center gap-3">
               <ChevronLeft className="h-4 w-4 flex-shrink-0" />
-              <div>
-                <div className="text-xs text-muted-foreground mb-1">Previous</div>
-                <div className="font-medium">{previousPage.title}</div>
-              </div>
+              <div className="font-medium">{previousPage.title}</div>
             </div>
           </Button>
         )}
@@ -66,10 +63,7 @@ export function DocumentationNavigation({ currentPath, onNavigate }: Documentati
             className="h-auto p-4 justify-end text-right hover:bg-muted/50"
           >
             <div className="flex items-center gap-3">
-              <div>
-                <div className="text-xs text-muted-foreground mb-1">Next</div>
-                <div className="font-medium">{nextPage.title}</div>
-              </div>
+              <div className="font-medium">{nextPage.title}</div>
               <ChevronRight className="h-4 w-4 flex-shrink-0" />
             </div>
           </Button>
