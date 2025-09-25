@@ -5,6 +5,7 @@ import { SearchBar } from '@/components/SearchBar';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { MobileMenu } from '@/components/MobileMenu';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { DocumentationNavigation } from '@/components/DocumentationNavigation';
 import { cn } from '@/lib/utils';
 import documentationContent from '@/data/documentation';
 import referenceDocumentation from '@/data/reference-docs';
@@ -68,6 +69,10 @@ const Index = () => {
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-4xl mx-auto px-6 py-8">
             <MarkdownRenderer content={currentContent} />
+            <DocumentationNavigation 
+              currentPath={currentPath}
+              onNavigate={handleNavigate}
+            />
           </div>
         </main>
       </div>
