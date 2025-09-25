@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# Lingvanex Translator API Documentation
 
-## Project info
+A comprehensive documentation site for the Lingvanex Translator API built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/7f6b3b0b-a5ec-4ffc-b4c3-9977abab1f47
+## Features
 
-## How can I edit this code?
+- 📱 Responsive design with mobile-friendly sidebar
+- 🔍 Full-text search across all documentation
+- 🌙 Dark/light theme toggle
+- 📖 Complete API reference with code examples
+- 🔄 Migration guide from Google Translate
+- 💻 Code examples in 15+ programming languages
 
-There are several ways of editing your application.
+## Getting Started
 
-**Use Lovable**
+### Prerequisites
+- Node.js 16+ 
+- npm or yarn
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7f6b3b0b-a5ec-4ffc-b4c3-9977abab1f47) and start prompting.
+### Installation
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Building for Production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/          # React components
+│   ├── ThemeProvider.tsx
+│   ├── DocumentationSidebar.tsx
+│   ├── SearchBar.tsx
+│   └── MarkdownRenderer.tsx
+├── data/               # Documentation content
+│   ├── documentation.ts
+│   ├── reference-docs.ts
+│   └── migration-docs.ts
+└── pages/
+    └── Index.tsx       # Main documentation page
+```
 
-## What technologies are used for this project?
+## Adding Documentation
 
-This project is built with:
+1. Add new markdown content to the appropriate data file
+2. Update the sidebar structure in `DocumentationSidebar.tsx`
+3. Add search entries in `SearchBar.tsx`
 
-- Vite
+## API Key Security
+
+⚠️ **Important**: Never expose API keys in client-side code. This documentation site is for reference only. Always:
+
+- Store API keys as environment variables
+- Make API calls from your backend server
+- Never commit API keys to version control
+
+## Technologies Used
+
+- React 18
 - TypeScript
-- React
-- shadcn-ui
 - Tailwind CSS
+- React Markdown
+- Fuse.js (search)
+- React Syntax Highlighter
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/7f6b3b0b-a5ec-4ffc-b4c3-9977abab1f47) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MIT License
