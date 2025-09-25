@@ -83,8 +83,8 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
         {level === 0 ? (
           <div
             className={cn(
-              "flex items-center justify-between w-full p-3 text-left rounded-lg transition-colors",
-              "hover:bg-sidebar-accent text-sidebar-foreground",
+              "flex items-center justify-between w-full p-3 text-left transition-colors",
+              "text-sidebar-foreground",
               "cursor-pointer select-none"
             )}
             onClick={() => hasChildren && toggleExpanded(item.id)}
