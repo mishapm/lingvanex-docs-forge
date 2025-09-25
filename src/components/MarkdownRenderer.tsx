@@ -75,6 +75,34 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         remarkPlugins={[remarkGfm]}
         components={{
           code: CodeBlock,
+          div: ({ children, style, ...props }) => (
+            <div 
+              className={cn("my-4", props.className)} 
+              style={style ? { 
+                display: style.display,
+                justifyContent: style.justifyContent || style['justify-content'],
+                margin: style.margin 
+              } : undefined}
+              {...props}
+            >
+              {children}
+            </div>
+          ),
+          iframe: ({ src, width, height, title, allow, ...props }) => (
+            <div className="flex justify-center my-6">
+              <iframe
+                src={src}
+                width={width}
+                height={height}
+                title={title}
+                frameBorder="0"
+                allow={allow}
+                referrerPolicy={(props as any).referrerpolicy}
+                allowFullScreen={(props as any).allowfullscreen}
+                className="rounded-lg border border-border"
+              />
+            </div>
+          ),
           h1: ({ children, ...props }) => (
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6" {...props}>
               {children}
