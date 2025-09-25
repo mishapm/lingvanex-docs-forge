@@ -30,15 +30,8 @@ Your API key will be available in the Cloud API section of your account, ready f
 
 Watch this step-by-step guide on how to create your Lingvanex API key:
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; margin-bottom: 12px;">
-  <iframe 
-    src="https://www.youtube.com/embed/9DT8UPjxQT4" 
-    title="How to connect Cloud API Lingvanex | How to create a Lingvanex API key"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-  </iframe>
+<div style="display: flex; justify-content: center; margin-bottom: 12px;">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/9DT8UPjxQT4?si=oLryrvspWGEgQO82" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 [**Watch on YouTube →**](https://www.youtube.com/watch?v=9DT8UPjxQT4)
