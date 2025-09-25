@@ -1,63 +1,65 @@
 export const documentationContent: Record<string, string> = {
   '/what-is-lingvanex': `# What is Lingvanex Translator Service?
 
-Lingvanex Translator Service is a powerful and comprehensive machine translation API that enables developers to integrate high-quality text translation capabilities into their applications. Built with advanced neural machine translation technology, it supports over 100 languages and provides reliable, accurate translations for a wide range of use cases.
+Lingvanex Translator Service is a cloud-based neural machine translation service designed for developers who need reliable, high-quality translation capabilities. Compatible with any operating system, Lingvanex enables you to build intelligent, multi-language solutions for your applications across all supported languages.
 
-## Key Features
+## Translator Features and Development Options
 
-- **High-Quality Translation**: Advanced neural machine translation models ensure accurate and contextually appropriate translations
-- **Extensive Language Support**: Support for 100+ languages including major world languages and regional variants
-- **RESTful API**: Simple, developer-friendly REST API with JSON request/response format
-- **Secure Authentication**: API key-based authentication to protect your translation requests
-- **Flexible Input**: Support for plain text, HTML content, and batch translations
-- **Transliteration Support**: Optional transliteration for languages with different writing systems
+The following features are supported by the Translator service:
 
-## Use Cases
+| Feature | Description | Development Options |
+|---------|-------------|-------------------|
+| **Text Translation** | Translates text from supported source to target language in real-time | • REST API<br>• Translation Server<br>• Mobile SDK |
+| **HTML Translation** | Translates HTML content from supported source to target language in real-time | • REST API<br>• Translation Server<br>• Mobile SDK |
+| **Language Detection** | Automatically detects the source language of input text | • REST API<br>• Mobile SDK |
+| **Transliteration** | Converts text between different writing systems | • REST API<br>• Mobile SDK |
 
-### Web Applications
-Translate user-generated content, product descriptions, or interface elements in real-time.
+## Try the Lingvanex Translator Service for Free
 
-### Mobile Apps
-Provide multilingual support for mobile applications with offline and online translation capabilities.
+To use the Lingvanex Translator you'll need a Lingvanex account. If you don't have one, you can sign up for free:
 
-### E-commerce
-Translate product catalogs, customer reviews, and support content for global markets.
+1. Create your account at the Lingvanex registration page
+2. Navigate to the Cloud API section in your account dashboard
+3. Complete the billing address information
+4. Click "Continue to payment" to generate your API key
+5. For the free trial period, no payment card is required
 
-### Content Management
-Automatically translate blog posts, articles, and documentation for international audiences.
+Your API key will be available in the Cloud API section of your account, ready for use in translation requests.
 
-### Customer Support
-Translate support tickets and responses to provide multilingual customer service.
+## Getting Started Video Tutorial
 
-## Getting Started
+Watch this step-by-step guide on how to create your Lingvanex API key:
 
-To start using the Lingvanex Translator Service:
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe 
+    src="https://www.youtube.com/embed/9DT8UPjxQT4" 
+    title="How to connect Cloud API Lingvanex | How to create a Lingvanex API key"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
 
-1. **Get your API key**: Sign up for a Lingvanex account and obtain your authentication key
-2. **Choose your plan**: Select a pricing plan that fits your usage requirements
-3. **Integrate the API**: Use our REST API endpoints to translate text in your applications
-4. **Test and deploy**: Test your integration and deploy to production
+## Security Best Practices
 
-## Security Note
+⚠️ **Important Security Notice**: Your API key is confidential and should never be exposed in client-side code. Always make API calls from your backend server to protect your authentication credentials.
 
-⚠️ **Important**: Your API key is secret and should never be exposed in client-side code. Always make API calls from your backend server to protect your authentication credentials.
+## Quick Start Example
 
-## Quick Example
+Here's a basic example of translating text from English to German:
 
-Here's a simple example of translating text from English to German:
-
-\`\`\`json
-POST https://api-b2b.backenster.com/b1/api/v3/translate
-Authorization: Lingvanex-Auth-Key YOUR_API_KEY
-Content-Type: application/json
-
-{
-  "platform": "api",
-  "from": "en_GB",
-  "to": "de_DE",
-  "data": "Hello, world!",
-  "enableTransliteration": false
-}
+\`\`\`bash
+curl -X POST https://api-b2b.backenster.com/b1/api/v3/translate \\
+  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "platform": "api",
+    "from": "en_GB",
+    "to": "de_DE",
+    "data": "Hello, world!",
+    "enableTransliteration": false
+  }'
 \`\`\`
 
 **Response:**
@@ -68,7 +70,12 @@ Content-Type: application/json
 }
 \`\`\`
 
-Ready to get started? Check out our [pricing plans](/pricing) or dive into the [API reference](/translate).`,
+## Next Steps
+
+- Explore our [complete language support](/language-support)
+- Review [pricing options](/pricing) for your usage needs
+- Check out the [full API reference](/translate) for detailed implementation
+- Read our [FAQ section](/faq) for common questions`,
 
   '/language-support': `# Language Support
 
