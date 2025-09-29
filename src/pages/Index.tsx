@@ -6,6 +6,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { MobileMenu } from '@/components/MobileMenu';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { DocumentationNavigation } from '@/components/DocumentationNavigation';
+import { TableOfContents } from '@/components/TableOfContents';
 import { cn } from '@/lib/utils';
 import documentationContent from '@/data/documentation';
 import referenceDocumentation from '@/data/reference-docs';
@@ -36,7 +37,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex w-full">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:block w-80 bg-sidebar border-r border-sidebar-border flex-shrink-0">
+      <aside className="hidden md:block w-64 bg-sidebar border-r border-sidebar-border flex-shrink-0">
         <DocumentationSidebar 
           currentPath={currentPath}
           onNavigate={handleNavigate}
@@ -67,12 +68,22 @@ const Index = () => {
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="max-w-4xl mx-auto px-6 py-8">
-            <MarkdownRenderer content={currentContent} />
-            <DocumentationNavigation 
-              currentPath={currentPath}
-              onNavigate={handleNavigate}
-            />
+          <div className="flex max-w-6xl mx-auto px-3 py-8 gap-8">
+            {/* Main content */}
+            <div className="flex-1 min-w-0">
+              <MarkdownRenderer content={currentContent} />
+              <DocumentationNavigation 
+                currentPath={currentPath}
+                onNavigate={handleNavigate}
+              />
+            </div>
+            
+            {/* Table of Contents */}
+            <aside className="hidden lg:block w-64 flex-shrink-0">
+              <div className="sticky top-8">
+                <TableOfContents content={currentContent} />
+              </div>
+            </aside>
           </div>
         </main>
       </div>
