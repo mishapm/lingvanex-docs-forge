@@ -40,6 +40,7 @@ const sidebarStructure: SidebarItem[] = [
       { id: 'method-translate', title: 'Method: translate', href: '/method-translate' },
       { id: 'method-detect', title: 'Method: detect', href: '/method-detect' },
       { id: 'method-languages', title: 'Method: languages', href: '/method-languages' },
+      { id: 'method-language-support', title: 'Language support', href: '/method-language-support' },
     ],
   },
   {
