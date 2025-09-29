@@ -1,167 +1,78 @@
 export const migrationDocumentation: Record<string, string> = {
-  '/method-translate': `# Switching from Google Translate: Method translate
+  '/method-translate': `# Method translate
 
-This guide shows you how to migrate your Google Translate API calls to use Lingvanex Translator Service.
+Translates input text, returning translated text.
 
-## Key Differences
+## HTTP request
 
-| Aspect | Google Translate | Lingvanex |
-|--------|------------------|-----------|
-| **Authentication** | OAuth 2.0 / API Key | API Key in Authorization header |
-| **Base URL** | translate.googleapis.com | api-b2b.backenster.com |
-| **Language Codes** | Simple (e.g., 'en', 'de') | Regional variants (e.g., 'en_GB', 'de_DE') |
-| **Request Format** | Query params or POST body | JSON POST body only |
-| **Response Format** | Nested JSON structure | Simple JSON with 'err' and 'result' |
+\`POST https://api-gl.lingvanex.com/language/translate/v2\`
 
-## Before: Google Translate
+## Query parameters
 
-\`\`\`bash
-curl -X POST "https://translation.googleapis.com/language/translate/v2" \\
-  -H "Authorization: Bearer YOUR_OAUTH_TOKEN" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "q": "Hello, world!",
-    "source": "en",
-    "target": "de",
-    "format": "text"
-  }'
-\`\`\`
+| Parameters | Description |
+| --- | --- |
+| **q** | **string** (Required)<br>The input text to translate. Provide an array of strings to translate multiple phrases. The maximum number of strings is 128. |
+| **target** | **string** (Required)<br>The language to use for translation of the input text, set to one of the language codes listed in [Language Support.](https://docs.lingvanex.com/reference/language-support) |
+| **format** | **string**<br>The format of the source text, in either HTML (default) or plain-text. A value of html indicates HTML and a value of text indicates plain-text. |
+| **source** | **string**<br>The language of the source text, set to one of the language codes listed in [Language Support.](https://docs.lingvanex.com/reference/language-support) If the source language is not specified, the API will attempt to detect the source language automatically and return it within the response. |
+| **model** | **string**<br>Not optional, does not affect anything. |
+| **key** | **string**<br>A valid API key to handle requests for this API. |
 
-**Google Response:**
+## Response body
+
+If successful, the response body contains data with the following structure:
+
+JSON representation
+
 \`\`\`json
 {
   "data": {
-    "translations": [
-      {
-        "translatedText": "Hallo, Welt!",
-        "detectedSourceLanguage": "en"
-      }
-    ]
+    object(TranslateTextResponseList)
   }
 }
 \`\`\`
 
-## After: Lingvanex Translator
+| Fields | Description |
+| --- | --- |
+| **data** | **object(TranslateTextResponseList)**<br>The list of language translation responses. This list contains a language translation response for each query (q) sent in the language translation request. |
 
-\`\`\`bash
-curl -X POST "https://api-b2b.backenster.com/b1/api/v3/translate" \\
-  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "platform": "api",
-    "from": "en_GB",
-    "to": "de_DE",
-    "data": "Hello, world!",
-    "enableTransliteration": false
-  }'
-\`\`\`
+## TranslateTextResponseList
 
-**Lingvanex Response:**
+A response list contains a list of separate language translation responses.
+
+JSON representation
+
 \`\`\`json
 {
-  "err": null,
-  "result": "Hallo, Welt!"
+  "translations": [
+    array
+  ]
 }
 \`\`\`
 
-## Migration Code Examples
+| Fields | Description |
+| --- | --- |
+| **translations[]** | **array (TranslateTextResponseTranslation)**<br>Contains list of translation results of the supplied text. |
 
-### JavaScript Migration
+## TranslateTextResponseTranslation
 
-**Before (Google):**
-\`\`\`javascript
-// Google Translate
-const { Translate } = require('@google-cloud/translate').v2;
-const translate = new Translate();
+Contains a list of translation results for the requested text.
 
-async function translateText(text, target) {
-  const [translation] = await translate.translate(text, target);
-  return translation;
+JSON representation
+
+\`\`\`json
+{
+  "detectedSourceLanguage": string,
+  "model": string,
+  "translatedText": string
 }
 \`\`\`
 
-**After (Lingvanex):**
-\`\`\`javascript
-// Lingvanex Translator
-async function translateText(text, from, to) {
-  const response = await fetch('https://api-b2b.backenster.com/b1/api/v3/translate', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Lingvanex-Auth-Key YOUR_API_KEY',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      platform: 'api',
-      from: from,
-      to: to,
-      data: text,
-      enableTransliteration: false
-    })
-  });
-  
-  const data = await response.json();
-  if (data.err) throw new Error(data.err);
-  return data.result;
-}
-\`\`\`
-
-### Python Migration
-
-**Before (Google):**
-\`\`\`python
-# Google Translate
-from google.cloud import translate_v2 as translate
-
-client = translate.Client()
-result = client.translate('Hello, world!', target_language='de')
-print(result['translatedText'])
-\`\`\`
-
-**After (Lingvanex):**
-\`\`\`python
-# Lingvanex Translator  
-import requests
-
-def translate_text(text, from_lang, to_lang):
-    response = requests.post(
-        'https://api-b2b.backenster.com/b1/api/v3/translate',
-        headers={
-            'Authorization': 'Lingvanex-Auth-Key YOUR_API_KEY',
-            'Content-Type': 'application/json'
-        },
-        json={
-            'platform': 'api',
-            'from': from_lang,
-            'to': to_lang,
-            'data': text,
-            'enableTransliteration': False
-        }
-    )
-    data = response.json()
-    if data.get('err'):
-        raise Exception(data['err'])
-    return data['result']
-
-result = translate_text('Hello, world!', 'en_GB', 'de_DE')
-print(result)
-\`\`\`
-
-## Language Code Mapping
-
-| Google Code | Lingvanex Code | Language |
-|-------------|----------------|----------|
-| en | en_GB or en_US | English |
-| de | de_DE | German |
-| fr | fr_FR | French |
-| es | es_ES | Spanish |
-| ru | ru_RU | Russian |
-| zh | zh_CN or zh_TW | Chinese |
-| ja | ja_JP | Japanese |
-| ko | ko_KR | Korean |
-| pt | pt_PT or pt_BR | Portuguese |
-| it | it_IT | Italian |
-
-Choose the appropriate regional variant based on your target audience.`
+| Fields | Description |
+| --- | --- |
+| **detectedSourceLanguage** | **string**<br>The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be omitted. |
+| **model** | **string**<br>The translation model. Cloud Translation – Basic offers only the nmt Neural Machine Translation (NMT) model.<br>If you did not include a model parameter with your request, then this field is not included in the response. |
+| **translatedText** | **string**<br>Text translated into the target language. |`
 };
 
 export default migrationDocumentation;
