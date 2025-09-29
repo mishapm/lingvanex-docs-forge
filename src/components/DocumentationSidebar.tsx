@@ -41,13 +41,6 @@ const sidebarStructure: SidebarItem[] = [
       { id: 'method-detect', title: 'Method: detect', href: '/method-detect' },
       { id: 'method-languages', title: 'Method: languages', href: '/method-languages' },
       { id: 'method-language-support', title: 'Language support', href: '/method-language-support' },
-    ],
-  },
-  {
-    id: 'language-support-detailed',
-    title: 'Language support',
-    icon: Globe,
-    children: [
       { id: 'get-languages', title: 'Get languages', href: '/get-languages' },
       { id: 'post-languages', title: 'Post languages', href: '/post-languages' },
       { id: 'detect-languages', title: 'Detect languages', href: '/detect-languages' },
