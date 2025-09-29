@@ -80,7 +80,7 @@ const Index = () => {
             
             {/* Table of Contents */}
             <aside className="hidden lg:block w-64 flex-shrink-0">
-              <div className="sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+              <div className="fixed top-20 right-8 w-56 max-h-[calc(100vh-6rem)] bg-background/95 backdrop-blur-sm border border-border rounded-lg p-4 z-10">
                 <TableOfContents content={currentContent} />
               </div>
             </aside>
