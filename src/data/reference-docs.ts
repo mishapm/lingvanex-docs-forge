@@ -1,369 +1,447 @@
 export const referenceDocumentation: Record<string, string> = {
   '/getting-languages': `# Getting the List of Languages
 
-Retrieve the complete list of supported languages and their codes from the Lingvanex Translator Service.
+## Query Params
 
-## Endpoint
+**platform**
+- Type: string
+- Required: true
+- Default: api
 
-\`\`\`
-GET https://api-b2b.backenster.com/b1/api/v3/languages
-\`\`\`
+api
 
-## Authentication
+**code**  
+- Type: string
+- Default: en_GB
+- Description: The language code in the format "language code_code of the country", which is used to display the names of the languages. The language code is represented only in lowercase letters, the country code only in uppercase letters (example en_GB, es_ES, ru_RU etc). If this option is not present, then English is used by default
 
-Include your API key in the Authorization header:
+en_GB
 
-\`\`\`
-Authorization: Lingvanex-Auth-Key YOUR_API_KEY
-\`\`\`
+## Responses
 
-## Request Headers
+**200**
+Success
 
-| Header | Value | Required |
-|--------|--------|----------|
-| \`Authorization\` | \`Lingvanex-Auth-Key YOUR_API_KEY\` | Yes |
-| \`Accept\` | \`application/json\` | Yes |
-
-## Response Format
-
-The API returns a JSON object containing the list of supported languages:
-
-\`\`\`json
-{
-  "err": null,
-  "result": [
-    {
-      "code": "en_GB",
-      "name": "English (United Kingdom)",
-      "nativeName": "English"
-    },
-    {
-      "code": "de_DE",
-      "name": "German (Germany)",
-      "nativeName": "Deutsch"
-    }
-  ]
-}
-\`\`\`
-
-## Response Fields
-
-| Field | Type | Description |
-|-------|------|-------------|
-| \`err\` | string/null | Error message if request failed, null on success |
-| \`result\` | array | Array of language objects |
-| \`result[].code\` | string | Language code (e.g., "en_GB", "de_DE") |
-| \`result[].name\` | string | English name of the language |
-| \`result[].nativeName\` | string | Native name of the language |
+**403**
+Authorization error. You should add the API_KEY to request which can be created on the user control panel page https://lingvanex.com/account
 
 ## Code Examples
 
-### cURL
+<details>
+<summary>Shell</summary>
 
 \`\`\`bash
-curl -X GET "https://api-b2b.backenster.com/b1/api/v3/languages" \\
-  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY" \\
-  -H "Accept: application/json"
+curl -X GET "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB" \\
+  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY"
 \`\`\`
+</details>
 
-### JavaScript (Node.js)
+<details>
+<summary>Node</summary>
 
 \`\`\`javascript
-const fetch = require('node-fetch');
+const axios = require('axios');
 
-async function getLanguages() {
-  const response = await fetch('https://api-b2b.backenster.com/b1/api/v3/languages', {
-    method: 'GET',
-    headers: {
-      'Authorization': 'Lingvanex-Auth-Key YOUR_API_KEY',
-      'Accept': 'application/json'
-    }
-  });
-  
-  const data = await response.json();
-  
-  if (data.err) {
-    console.error('Error:', data.err);
-    return;
+const options = {
+  method: 'GET',
+  url: 'https://api-b2b.backenster.com/b1/api/v3/languages',
+  params: {
+    platform: 'api',
+    code: 'en_GB'
+  },
+  headers: {
+    Authorization: 'Lingvanex-Auth-Key YOUR_API_KEY'
   }
-  
-  console.log('Supported languages:', data.result);
-  return data.result;
-}
+};
 
-getLanguages();
+axios.request(options).then(function (response) {
+  console.log(response.data);
+}).catch(function (error) {
+  console.error(error);
+});
 \`\`\`
+</details>
 
-### Python
+<details>
+<summary>Ruby</summary>
 
-\`\`\`python
-import requests
-import json
+\`\`\`ruby
+require 'net/http'
+require 'uri'
 
-def get_languages():
-    url = "https://api-b2b.backenster.com/b1/api/v3/languages"
-    headers = {
-        "Authorization": "Lingvanex-Auth-Key YOUR_API_KEY",
-        "Accept": "application/json"
-    }
-    
-    response = requests.get(url, headers=headers)
-    data = response.json()
-    
-    if data.get("err"):
-        print(f"Error: {data['err']}")
-        return None
-        
-    print("Supported languages:", json.dumps(data["result"], indent=2))
-    return data["result"]
+uri = URI('https://api-b2b.backenster.com/b1/api/v3/languages')
+uri.query = URI.encode_www_form({
+  platform: 'api',
+  code: 'en_GB'
+})
 
-get_languages()
+http = Net::HTTP.new(uri.host, uri.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(uri)
+request['Authorization'] = 'Lingvanex-Auth-Key YOUR_API_KEY'
+
+response = http.request(request)
+puts response.body
 \`\`\`
+</details>
 
-### PHP
+<details>
+<summary>PHP</summary>
 
 \`\`\`php
 <?php
-function getLanguages() {
-    $url = "https://api-b2b.backenster.com/b1/api/v3/languages";
-    $headers = [
-        "Authorization: Lingvanex-Auth-Key YOUR_API_KEY",
-        "Accept: application/json"
-    ];
-    
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    
-    $response = curl_exec($ch);
-    curl_close($ch);
-    
-    $data = json_decode($response, true);
-    
-    if ($data['err']) {
-        echo "Error: " . $data['err'] . "\n";
-        return null;
-    }
-    
-    echo "Supported languages:\n";
-    echo json_encode($data['result'], JSON_PRETTY_PRINT);
-    return $data['result'];
-}
+$curl = curl_init();
 
-getLanguages();
+curl_setopt_array($curl, [
+  CURLOPT_URL => "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_HTTPHEADER => [
+    "Authorization: Lingvanex-Auth-Key YOUR_API_KEY"
+  ],
+]);
+
+$response = curl_exec($curl);
+curl_close($curl);
+
+echo $response;
 ?>
 \`\`\`
+</details>
 
-### Java
+<details>
+<summary>Swift</summary>
 
-\`\`\`java
-import java.io.IOException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.URI;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.JsonNode;
+\`\`\`swift
+import Foundation
 
-public class LingvanexLanguages {
-    private static final String API_KEY = "YOUR_API_KEY";
-    private static final String URL = "https://api-b2b.backenster.com/b1/api/v3/languages";
-    
-    public static void getLanguages() throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
-        
-        HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create(URL))
-            .header("Authorization", "Lingvanex-Auth-Key " + API_KEY)
-            .header("Accept", "application/json")
-            .GET()
-            .build();
-            
-        HttpResponse<String> response = client.send(request, 
-            HttpResponse.BodyHandlers.ofString());
-            
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(response.body());
-        
-        if (!jsonNode.get("err").isNull()) {
-            System.out.println("Error: " + jsonNode.get("err").asText());
-            return;
-        }
-        
-        System.out.println("Supported languages:");
-        System.out.println(mapper.writerWithDefaultPrettyPrinter()
-            .writeValueAsString(jsonNode.get("result")));
-    }
-    
-    public static void main(String[] args) {
-        try {
-            getLanguages();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+let url = URL(string: "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB")!
+var request = URLRequest(url: url)
+request.setValue("Lingvanex-Auth-Key YOUR_API_KEY", forHTTPHeaderField: "Authorization")
+
+let task = URLSession.shared.dataTask(with: request) { data, response, error in
+    if let data = data {
+        print(String(data: data, encoding: .utf8)!)
     }
 }
-\`\`\`
 
-### C#
+task.resume()
+\`\`\`
+</details>
+
+<details>
+<summary>C</summary>
+
+\`\`\`c
+#include <stdio.h>
+#include <curl/curl.h>
+
+int main(void) {
+    CURL *curl;
+    CURLcode res;
+
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Authorization: Lingvanex-Auth-Key YOUR_API_KEY");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+        curl_slist_free_all(headers);
+    }
+    return 0;
+}
+\`\`\`
+</details>
+
+<details>
+<summary>C#</summary>
 
 \`\`\`csharp
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
-public class LingvanexLanguages
+class Program
 {
-    private static readonly string ApiKey = "YOUR_API_KEY";
-    private static readonly string Url = "https://api-b2b.backenster.com/b1/api/v3/languages";
-    
-    public static async Task GetLanguagesAsync()
+    private static readonly HttpClient client = new HttpClient();
+
+    static async Task Main()
     {
-        using var client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY");
         
-        client.DefaultRequestHeaders.Add("Authorization", $"Lingvanex-Auth-Key {ApiKey}");
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        
-        try
-        {
-            var response = await client.GetAsync(Url);
-            var content = await response.Content.ReadAsStringAsync();
-            var data = JsonConvert.DeserializeObject<dynamic>(content);
-            
-            if (data.err != null)
-            {
-                Console.WriteLine($"Error: {data.err}");
-                return;
-            }
-            
-            Console.WriteLine("Supported languages:");
-            Console.WriteLine(JsonConvert.SerializeObject(data.result, Formatting.Indented));
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Exception: {ex.Message}");
-        }
-    }
-    
-    public static async Task Main(string[] args)
-    {
-        await GetLanguagesAsync();
+        string response = await client.GetStringAsync("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        Console.WriteLine(response);
     }
 }
 \`\`\`
+</details>
 
-### Go
+<details>
+<summary>C++</summary>
+
+\`\`\`cpp
+#include <iostream>
+#include <curl/curl.h>
+
+size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp) {
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+int main() {
+    CURL *curl;
+    CURLcode res;
+    std::string readBuffer;
+
+    curl = curl_easy_init();
+    if(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
+        
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Authorization: Lingvanex-Auth-Key YOUR_API_KEY");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        res = curl_easy_perform(curl);
+        curl_easy_cleanup(curl);
+        curl_slist_free_all(headers);
+        
+        std::cout << readBuffer << std::endl;
+    }
+    return 0;
+}
+\`\`\`
+</details>
+
+<details>
+<summary>Clojure</summary>
+
+\`\`\`clojure
+(require '[clj-http.client :as client])
+
+(def response 
+  (client/get "https://api-b2b.backenster.com/b1/api/v3/languages"
+              {:query-params {:platform "api" :code "en_GB"}
+               :headers {"Authorization" "Lingvanex-Auth-Key YOUR_API_KEY"}}))
+
+(println (:body response))
+\`\`\`
+</details>
+
+<details>
+<summary>Go</summary>
 
 \`\`\`go
 package main
 
 import (
-    "encoding/json"
     "fmt"
     "io"
     "net/http"
 )
 
-type LanguageResponse struct {
-    Err    interface{} \`json:"err"\`
-    Result []Language  \`json:"result"\`
-}
-
-type Language struct {
-    Code       string \`json:"code"\`
-    Name       string \`json:"name"\`
-    NativeName string \`json:"nativeName"\`
-}
-
-func getLanguages() error {
-    url := "https://api-b2b.backenster.com/b1/api/v3/languages"
-    
-    req, err := http.NewRequest("GET", url, nil)
-    if err != nil {
-        return err
-    }
-    
-    req.Header.Set("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
-    req.Header.Set("Accept", "application/json")
-    
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    if err != nil {
-        return err
-    }
-    defer resp.Body.Close()
-    
-    body, err := io.ReadAll(resp.Body)
-    if err != nil {
-        return err
-    }
-    
-    var langResp LanguageResponse
-    if err := json.Unmarshal(body, &langResp); err != nil {
-        return err
-    }
-    
-    if langResp.Err != nil {
-        fmt.Printf("Error: %v\n", langResp.Err)
-        return nil
-    }
-    
-    fmt.Println("Supported languages:")
-    prettyJSON, _ := json.MarshalIndent(langResp.Result, "", "  ")
-    fmt.Println(string(prettyJSON))
-    
-    return nil
-}
-
 func main() {
-    if err := getLanguages(); err != nil {
-        fmt.Printf("Error: %v\n", err)
+    url := "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"
+    
+    req, _ := http.NewRequest("GET", url, nil)
+    req.Header.Add("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
+    
+    res, _ := http.DefaultClient.Do(req)
+    defer res.Body.Close()
+    
+    body, _ := io.ReadAll(res.Body)
+    fmt.Println(string(body))
+}
+\`\`\`
+</details>
+
+<details>
+<summary>HTTP</summary>
+
+\`\`\`http
+GET /b1/api/v3/languages?platform=api&code=en_GB HTTP/1.1
+Host: api-b2b.backenster.com
+Authorization: Lingvanex-Auth-Key YOUR_API_KEY
+\`\`\`
+</details>
+
+<details>
+<summary>Java</summary>
+
+\`\`\`java
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"))
+                .header("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
+                .build();
+
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
     }
 }
 \`\`\`
+</details>
 
-## Error Handling
+<details>
+<summary>JavaScript</summary>
 
-Common error responses:
+\`\`\`javascript
+const url = 'https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB';
+const options = {
+  method: 'GET',
+  headers: {
+    Authorization: 'Lingvanex-Auth-Key YOUR_API_KEY'
+  }
+};
 
-### Invalid API Key
+fetch(url, options)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
+\`\`\`
+</details>
+
+<details>
+<summary>JSON</summary>
+
 \`\`\`json
 {
-  "err": "Invalid API key",
-  "result": null
+  "method": "GET",
+  "url": "https://api-b2b.backenster.com/b1/api/v3/languages",
+  "params": {
+    "platform": "api",
+    "code": "en_GB"
+  },
+  "headers": {
+    "Authorization": "Lingvanex-Auth-Key YOUR_API_KEY"
+  }
 }
 \`\`\`
+</details>
 
-### Rate Limit Exceeded
-\`\`\`json
-{
-  "err": "Rate limit exceeded",
-  "result": null
+<details>
+<summary>Kotlin</summary>
+
+\`\`\`kotlin
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
+fun main() {
+    val client = OkHttpClient()
+    
+    val request = Request.Builder()
+        .url("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB")
+        .addHeader("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
+        .build()
+    
+    client.newCall(request).execute().use { response ->
+        println(response.body?.string())
+    }
 }
 \`\`\`
+</details>
 
-### Server Error
-\`\`\`json
-{
-  "err": "Internal server error",
-  "result": null
+<details>
+<summary>Objective_C</summary>
+
+\`\`\`objc
+#import <Foundation/Foundation.h>
+
+int main(int argc, const char * argv[]) {
+    @autoreleasepool {
+        NSURL *url = [NSURL URLWithString:@"https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setValue:@"Lingvanex-Auth-Key YOUR_API_KEY" forHTTPHeaderField:@"Authorization"];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (data) {
+                NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSLog(@"%@", result);
+            }
+        }];
+        [task resume];
+        
+        [[NSRunLoop currentRunLoop] run];
+    }
+    return 0;
 }
 \`\`\`
+</details>
 
-## Best Practices
+<details>
+<summary>OCaml</summary>
 
-1. **Cache the language list**: The list of supported languages changes infrequently, so cache the response
-2. **Handle errors gracefully**: Always check the \`err\` field before processing results
-3. **Use appropriate timeouts**: Set reasonable timeout values for your HTTP requests
-4. **Implement retry logic**: Add exponential backoff for transient failures
+\`\`\`ocaml
+open Lwt.Infix
 
-## Next Steps
+let get_languages () =
+  let uri = Uri.of_string "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB" in
+  let headers = Cohttp.Header.init_with "Authorization" "Lingvanex-Auth-Key YOUR_API_KEY" in
+  Cohttp_lwt_unix.Client.get ~headers uri >>= fun (resp, body) ->
+  Cohttp_lwt.Body.to_string body >|= fun body_string ->
+  print_endline body_string
 
-- [Translate text using the API](/translate)
-- [Learn about language codes](/language-support)
-- [Migration from Google Translate](/method-translate)
+let () = Lwt_main.run (get_languages ())
+\`\`\`
+</details>
+
+<details>
+<summary>PowerShell</summary>
+
+\`\`\`powershell
+$headers = @{
+    'Authorization' = 'Lingvanex-Auth-Key YOUR_API_KEY'
+}
+
+$response = Invoke-RestMethod -Uri 'https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB' -Method Get -Headers $headers
+$response | ConvertTo-Json
+\`\`\`
+</details>
+
+<details>
+<summary>Python</summary>
+
+\`\`\`python
+import requests
+
+url = "https://api-b2b.backenster.com/b1/api/v3/languages"
+querystring = {"platform": "api", "code": "en_GB"}
+headers = {"Authorization": "Lingvanex-Auth-Key YOUR_API_KEY"}
+
+response = requests.request("GET", url, headers=headers, params=querystring)
+print(response.text)
+\`\`\`
+</details>
+
+<details>
+<summary>R</summary>
+
+\`\`\`r
+library(httr)
+
+url <- "https://api-b2b.backenster.com/b1/api/v3/languages"
+headers <- add_headers(Authorization = "Lingvanex-Auth-Key YOUR_API_KEY")
+query <- list(platform = "api", code = "en_GB")
+
+response <- GET(url, headers, query = query)
+content(response, "text")
+\`\`\`
+</details>
 `,
   '/translate': `# Translate API
 
