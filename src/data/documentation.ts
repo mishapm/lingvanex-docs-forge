@@ -32,43 +32,7 @@ Watch this step-by-step guide on how to create your Lingvanex API key:
   <iframe width="560" height="315" src="https://www.youtube.com/embed/9DT8UPjxQT4?si=IeYZXUiFIiHOkI53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-[**Watch on YouTube →**](https://www.youtube.com/watch?v=9DT8UPjxQT4)
-
-## Quick Start Example
-
-Here's a basic example of translating text from English to German:
-
-\`\`\`bash
-curl -X POST https://api-b2b.backenster.com/b1/api/v3/translate \\
-  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "platform": "api",
-    "from": "en_GB",
-    "to": "de_DE",
-    "data": "Hello, world!",
-    "enableTransliteration": false
-  }'
-\`\`\`
-
-**Response:**
-\`\`\`json
-{
-  "err": null,
-  "result": "Hallo, Welt!"
-}
-\`\`\`
-
-## Security Best Practices
-
-⚠️ **Important Security Notice**: Your API key is confidential and should never be exposed in client-side code. Always make API calls from your backend server to protect your authentication credentials.
-
-## Next Steps
-
-- Explore our [complete language support](/language-support)
-- Review [pricing options](/pricing) for your usage needs
-- Check out the [full API reference](/translate) for detailed implementation
-- Read our [FAQ section](/faq) for common questions`,
+[**Watch on YouTube →**](https://www.youtube.com/watch?v=9DT8UPjxQT4)`,
 
   '/language-support': `# Language Support
 
