@@ -24,15 +24,6 @@ To use the Lingvanex Translator you'll need a Lingvanex account. If you don't ha
 
 Your API key will be available in the Cloud API section of your account, ready for use in translation requests.
 
-## Getting Started Video Tutorial
-
-Watch this step-by-step guide on how to create your Lingvanex API key:
-
-<div style="display: flex; justify-content: center; margin: 20px 0;">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/9DT8UPjxQT4?si=IeYZXUiFIiHOkI53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-[**Watch on YouTube →**](https://www.youtube.com/watch?v=9DT8UPjxQT4)
 
 ## Quick Start Example
 
