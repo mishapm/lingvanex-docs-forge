@@ -167,8 +167,8 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           <div className="flex justify-center my-6">
             <iframe
               src={src}
-              width={width}
-              height={height}
+              width={width ? Math.round(parseInt(width) * 1.5) : width}
+              height={height ? Math.round(parseInt(height) * 1.5) : height}
               title={title}
               frameBorder="0"
               allow={allow}
