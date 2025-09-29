@@ -17,7 +17,7 @@ The following features are supported by the Translator service. Use these capabi
 To use the Lingvanex Translator you'll need a Lingvanex account. If you don't have one, you can sign up for free:
 
 1. Create your account at the [Lingvanex registration page](https://lingvanex.com/account/)
-2. Navigate to the [Cloud API section](https://lingvanex.com/account/#b2b) in your account dashboard
+2. Navigate to the [Cloud API section](https://account.lingvanex.com/ru/dashboard/) in your account dashboard
 3. Complete the billing address information
 4. Click "Continue to payment" to generate your API key
 5. For the free trial period, no payment card is required
