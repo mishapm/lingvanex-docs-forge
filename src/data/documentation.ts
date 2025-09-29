@@ -249,235 +249,66 @@ So you can translate 200 000 characters for free.`,
 
   '/faq': `# Translator Service FAQ
 
-Find answers to the most commonly asked questions about the Lingvanex Translator Service.
+## How much does the API cost?
 
-## Getting Started
+The price per million characters is 5$.
 
-### How do I get started with Lingvanex Translator Service?
+## Is there a free plan?
 
-1. **Sign up** for an account at [lingvanex.com](https://lingvanex.com)
-2. **Verify your email** address
-3. **Generate your API key** from the dashboard
-4. **Choose a pricing plan** or start with the free tier
-5. **Make your first API call** using our documentation
+When you [create the API key](https://docs.lingvanex.com/reference/overview#try-the-lingvanex-translator-service-for-free) on the account page you receive 1$. So you can translate 200 000 characters for free.
 
-### Where do I find my API key?
+## Where can I get the authorization key?
 
-After creating your account:
-1. Log into your dashboard
-2. Navigate to "API Keys" section
-3. Click "Generate New Key" or copy your existing key
-4. Store it securely in your application
+Before using the API you need to create the [account](https://lingvanex.com/account) and then generate the API key at the bottom of the page. You must use this authorization key to authorize requests.
 
-### Is there a free tier available?
+## Do I have a request limit per month?
 
-Yes! Our free tier includes:
-- 500 characters per month
-- Access to all 100+ languages
-- Standard translation quality
-- Email support
+You don't have any limit per month. You only have a character limit. You can use the API till you have money on your balance.
 
-## Authentication & Security
+## How can I translate HTML?
 
-### How do I authenticate API requests?
+You need to add the parameter "translateMode" with the value "html" to the translate method.
 
-Use your API key in the Authorization header:
+## How can I make a particular word non-translatable?
 
-\`\`\`http
-Authorization: Lingvanex-Auth-Key YOUR_API_KEY
+You just need to add one of the tags: \`"t"\`, \`"notranslate"\`, \`"shade"\`. Here is an example from a text with the non-translatable world of Lingvanex:
+
+HTML tags example:
+\`\`\`html
+<notranslate>Lingvanex</notranslate>
 \`\`\`
 
-### Is my API key secure?
+If you use **"translateMode": "html"** with HTML content containing non-translatable elements.
 
-⚠️ **Critical**: Your API key is secret and should never be exposed in client-side code. Always:
-- Store it as an environment variable
-- Make API calls from your backend server only
-- Rotate keys regularly
-- Monitor usage for suspicious activity
+## How does Translator count characters?
 
-### Can I use the API from a web browser?
+Translator counts every code point defined in Unicode as a character except html tags If you use \`"translateMode": "html"\` and non-translatable tags if you don't use \`"translateMode": "html"\`. Each translation counts as a separate translation, even if the request was made in a single API call translating to multiple languages. The length of the response doesn't matter and the number of requests, words, bytes, or sentences isn't relevant to character count.
 
-**No, never make direct API calls from browser JavaScript**. This would expose your secret API key to users. Instead:
-- Create a backend endpoint that calls our API
-- Have your frontend call your secure backend
-- Your backend handles the Lingvanex API communication
+Translator counts the following input:
 
-## API Usage
+- Text passed to Translator in the body of a request.
+- An individual letter.
+- Punctuation.
+- A space, tab, markup, or any white-space character.
+- A repeated translation, even if you've previously translated the same text. Every character submitted to the translate function is counted even when the content is unchanged or the source and target language are the same.
 
-### What is the base URL for the API?
+Non-translatable tags aren't counted when you don't use \`"translateMode": "html"\`. For example, when you translate \`<notranslate>Hello</notranslate>\` translator counts only 5 characters, not 32.
 
-\`\`\`
-https://api-b2b.backenster.com/b1/api/v3/
-\`\`\`
+## Where can I see my monthly usage?
 
-### What request format should I use?
+You can track your spending in your Lingvanex account.
 
-- **Method**: POST
-- **Content-Type**: application/json
-- **Accept**: application/json
-- **Authorization**: Lingvanex-Auth-Key YOUR_API_KEY
+1. [Log in](https://lingvanex.com/login/) to the Lingvanex website.
+2. Go to the Cloud API tab.
+3. At the bottom, under your API key, you will see the amount you spent in the translation service.
 
-### What's the basic request structure?
+## What translation limits does API have (chars in requests, requests per second, etc.)?
 
-\`\`\`json
-{
-  "platform": "api",
-  "from": "en_GB",
-  "to": "de_DE", 
-  "data": "Hello, world!",
-  "enableTransliteration": false
-}
-\`\`\`
+We recommend not to send more than 10 parallel requests per second. We don't have concrete limits for maximum characters per request right now. But probably, we will add a limit for 20 000 characters per request soon for optimal performance and response time. So if you want to translate a text that has more than 20 000 characters it's better to divide it into several requests and send them sequentially.
 
-### How do I handle errors?
+## Does API support JSON translation?
 
-Check the \`err\` field in responses:
-
-\`\`\`json
-{
-  "err": null,           // null = success
-  "result": "Hallo, Welt!"
-}
-\`\`\`
-
-\`\`\`json
-{
-  "err": "Invalid API key",  // error message
-  "result": null
-}
-\`\`\`
-
-## Languages & Translation
-
-### How many languages are supported?
-
-We support 100+ languages including major world languages and regional variants like:
-- \`en_US\` (American English) vs \`en_GB\` (British English)
-- \`pt_PT\` (European Portuguese) vs \`pt_BR\` (Brazilian Portuguese)
-- \`zh_CN\` (Simplified Chinese) vs \`zh_TW\` (Traditional Chinese)
-
-### How do I get the list of supported languages?
-
-\`\`\`bash
-curl -X GET "https://api-b2b.backenster.com/b1/api/v3/languages" \\
-  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY"
-\`\`\`
-
-### Can I detect the source language automatically?
-
-Yes, use our language detection endpoint:
-
-\`\`\`json
-POST /b1/api/v3/detect
-{
-  "platform": "api",
-  "data": "Bonjour le monde!"
-}
-\`\`\`
-
-### What is transliteration?
-
-Transliteration converts text from one writing system to another (e.g., Cyrillic to Latin). Enable it with:
-
-\`\`\`json
-{
-  "enableTransliteration": true
-}
-\`\`\`
-
-### Can I translate HTML content?
-
-Yes! Our API can safely translate HTML while preserving tags:
-
-\`\`\`json
-{
-  "platform": "api",
-  "from": "en_GB",
-  "to": "de_DE",
-  "data": "<p>Hello <strong>world</strong>!</p>",
-  "enableTransliteration": false
-}
-\`\`\`
-
-## Rate Limits & Quotas
-
-### What are the rate limits?
-
-- **Free tier**: 10 requests/minute
-- **Starter**: 60 requests/minute  
-- **Business**: 180 requests/minute
-- **Enterprise**: Custom limits
-
-### How are characters counted?
-
-- Each character in your input text counts toward your quota
-- Spaces and punctuation are included
-- For HTML, only text content is counted (tags excluded)
-- Failed requests don't count
-
-### What happens if I exceed my quota?
-
-Your requests continue to work at pay-as-you-go rates ($0.20 per 1,000 characters).
-
-## Billing & Plans
-
-### Can I change my plan anytime?
-
-Yes, upgrade or downgrade at any time. Changes take effect immediately with prorated billing.
-
-### Do you offer refunds?
-
-We provide pro-rated refunds for downgrades and cancellations.
-
-### What payment methods do you accept?
-
-- Credit cards (Visa, MasterCard, American Express)
-- PayPal
-- Bank transfer (Enterprise plans only)
-
-## Technical Support
-
-### How do I get support?
-
-- **Free tier**: Email support
-- **Paid plans**: Priority email support
-- **Business**: Phone and email support
-- **Enterprise**: 24/7 dedicated support
-
-### Where can I find code examples?
-
-Check our comprehensive [API reference](/translate) with examples in:
-- cURL
-- JavaScript/Node.js
-- Python
-- PHP
-- Java
-- C#
-- Go
-- And more!
-
-### Can I get help with integration?
-
-Yes! Our support team can help with:
-- API integration guidance
-- Best practices recommendations
-- Performance optimization
-- Custom implementation support
-
-## Migration from Other Services
-
-### How do I migrate from Google Translate?
-
-See our detailed [migration guide](/method-translate) with side-by-side comparisons and code examples.
-
-### What's different from Google Translate API?
-
-- Different authentication (API key vs OAuth)
-- Different language codes (\`en_GB\` vs \`en\`)
-- Different request/response format
-- Competitive pricing with free tier
-
-Still have questions? Contact our support team at support@lingvanex.com or check our [API reference documentation](/translate).`
+No, but you can translate all keys and values recursively and create a new JSON using the translated content.`
 };
 
 export default documentationContent;
