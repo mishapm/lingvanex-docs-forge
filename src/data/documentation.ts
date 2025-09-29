@@ -11,8 +11,6 @@ The following features are supported by the Translator service. Use these capabi
 |---------|-------------|-------------------|
 | **Text Translation** | Translates text from supported source to target language in real time | • [REST API](/translate)<br>• Translation Server<br>• Mobile SDK |
 | **HTML Translation** | Translates HTML content from supported source to target language in real time | • [REST API](/translate)<br>• Translation Server<br>• Mobile SDK |
-| **Language Detection** | Automatically detects the source language of input text | • [REST API](/detect)<br>• Mobile SDK |
-| **Transliteration** | Converts text between different writing systems | • [REST API](/transliterate)<br>• Mobile SDK |
 
 ## Try the Lingvanex Translator Service for Free
 
