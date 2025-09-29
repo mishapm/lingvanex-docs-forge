@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useTheme } from './ThemeProvider';
@@ -89,6 +90,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
             <ReactMarkdown
               key={`text-${lastIndex}`}
               remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
               components={markdownComponents}
             >
               {beforeText}
@@ -111,6 +113,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           <ReactMarkdown
             key={`text-${lastIndex}`}
             remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
             components={markdownComponents}
           >
             {remainingText}
@@ -124,6 +127,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
       return (
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
           components={markdownComponents}
         >
           {text}
@@ -136,102 +140,112 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
 
   const markdownComponents = {
           code: CodeBlock,
-          div: ({ children, style, ...props }) => (
-            <div 
-              className={cn("my-4", props.className)} 
-              style={style ? { 
-                display: style.display,
-                justifyContent: style.justifyContent || style['justify-content'],
-                margin: style.margin 
-              } : undefined}
-              {...props}
-            >
+        details: ({ children, ...props }) => (
+          <details className="my-4 border border-border rounded-lg" {...props}>
+            {children}
+          </details>
+        ),
+        summary: ({ children, ...props }) => (
+          <summary className="px-4 py-3 font-medium cursor-pointer hover:bg-muted/50 rounded-t-lg border-b border-border last:border-b-0 last:rounded-b-lg" {...props}>
+            {children}
+          </summary>
+        ),
+        div: ({ children, style, ...props }) => (
+          <div 
+            className={cn("my-4", props.className)} 
+            style={style ? { 
+              display: style.display,
+              justifyContent: style.justifyContent || style['justify-content'],
+              margin: style.margin 
+            } : undefined}
+            {...props}
+          >
+            {children}
+          </div>
+        ),
+        iframe: ({ src, width, height, title, allow, ...props }) => (
+          <div className="flex justify-center my-6">
+            <iframe
+              src={src}
+              width={width}
+              height={height}
+              title={title}
+              frameBorder="0"
+              allow={allow}
+              referrerPolicy={(props as any).referrerpolicy}
+              allowFullScreen={(props as any).allowfullscreen}
+              className="rounded-lg border border-border"
+            />
+          </div>
+        ),
+        h1: ({ children, ...props }) => (
+          <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6" {...props}>
+            {children}
+          </h1>
+        ),
+        h2: ({ children, ...props }) => (
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground mt-8 mb-4" {...props}>
+            {children}
+          </h2>
+        ),
+        h3: ({ children, ...props }) => (
+          <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" {...props}>
+            {children}
+          </h3>
+        ),
+        p: ({ children, ...props }) => (
+          <p className="text-foreground leading-7 mb-4" {...props}>
+            {children}
+          </p>
+        ),
+        ul: ({ children, ...props }) => (
+          <ul className="text-foreground space-y-2 mb-4" {...props}>
+            {children}
+          </ul>
+        ),
+        ol: ({ children, ...props }) => (
+          <ol className="text-foreground space-y-2 mb-4" {...props}>
+            {children}
+          </ol>
+        ),
+        li: ({ children, ...props }) => (
+          <li className="text-foreground" {...props}>
+            {children}
+          </li>
+        ),
+        blockquote: ({ children, ...props }) => (
+          <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground my-4" {...props}>
+            {children}
+          </blockquote>
+        ),
+        table: ({ children, ...props }) => (
+          <div className="overflow-x-auto my-6">
+            <table className="min-w-full border-collapse border border-border" {...props}>
               {children}
-            </div>
-          ),
-          iframe: ({ src, width, height, title, allow, ...props }) => (
-            <div className="flex justify-center my-6">
-              <iframe
-                src={src}
-                width={width}
-                height={height}
-                title={title}
-                frameBorder="0"
-                allow={allow}
-                referrerPolicy={(props as any).referrerpolicy}
-                allowFullScreen={(props as any).allowfullscreen}
-                className="rounded-lg border border-border"
-              />
-            </div>
-          ),
-          h1: ({ children, ...props }) => (
-            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6" {...props}>
-              {children}
-            </h1>
-          ),
-          h2: ({ children, ...props }) => (
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground mt-8 mb-4" {...props}>
-              {children}
-            </h2>
-          ),
-          h3: ({ children, ...props }) => (
-            <h3 className="text-xl font-semibold text-foreground mt-6 mb-3" {...props}>
-              {children}
-            </h3>
-          ),
-          p: ({ children, ...props }) => (
-            <p className="text-foreground leading-7 mb-4" {...props}>
-              {children}
-            </p>
-          ),
-          ul: ({ children, ...props }) => (
-            <ul className="text-foreground space-y-2 mb-4" {...props}>
-              {children}
-            </ul>
-          ),
-          ol: ({ children, ...props }) => (
-            <ol className="text-foreground space-y-2 mb-4" {...props}>
-              {children}
-            </ol>
-          ),
-          li: ({ children, ...props }) => (
-            <li className="text-foreground" {...props}>
-              {children}
-            </li>
-          ),
-          blockquote: ({ children, ...props }) => (
-            <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground my-4" {...props}>
-              {children}
-            </blockquote>
-          ),
-          table: ({ children, ...props }) => (
-            <div className="overflow-x-auto my-6">
-              <table className="min-w-full border-collapse border border-border" {...props}>
-                {children}
-              </table>
-            </div>
-          ),
-          th: ({ children, ...props }) => (
-            <th className="border border-border px-4 py-2 bg-muted font-semibold text-left" {...props}>
-              {children}
-            </th>
-          ),
-          td: ({ children, ...props }) => (
-            <td className="border border-border px-4 py-2" {...props}>
-              {children}
-            </td>
-          ),
-          a: ({ children, href, ...props }) => (
-            <a 
-              href={href}
-              className="text-primary hover:text-primary-hover underline"
-              target={href?.startsWith('http') ? '_blank' : undefined}
-              rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-              {...props}
-            >
-              {children}
-            </a>
-          ),
+            </table>
+          </div>
+        ),
+        th: ({ children, ...props }) => (
+          <th className="border border-border px-4 py-2 bg-muted font-semibold text-left" {...props}>
+            {children}
+          </th>
+        ),
+        td: ({ children, ...props }) => (
+          <td className="border border-border px-4 py-2" {...props}>
+            {children}
+          </td>
+        ),
+        a: ({ children, href, ...props }) => (
+          <a 
+            href={href}
+            className="text-primary hover:text-primary-hover underline"
+            target={href?.startsWith('http') ? '_blank' : undefined}
+            rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+            {...props}
+          >
+            {children}
+          </a>
+        ),
   };
 
   return (
