@@ -37,14 +37,20 @@ const sidebarStructure: SidebarItem[] = [
     title: 'Switching from Google Translate to Lingvanex Translator',
     icon: ArrowLeftRight,
     children: [
-      { id: 'method-translate', title: 'Method: translate', href: '/method-translate' },
-      { id: 'method-detect', title: 'Method: detect', href: '/method-detect' },
-      { id: 'method-languages', title: 'Method: languages', href: '/method-languages' },
-      { id: 'method-language-support', title: 'Language support', href: '/method-language-support' },
+      {
+        id: 'google-migration-guide',
+        title: 'Switching from Google Translate to Lingvanex Translator',
+        children: [
+          { id: 'method-translate', title: 'Method: translate', href: '/method-translate' },
+          { id: 'method-detect', title: 'Method: detect', href: '/method-detect' },
+          { id: 'method-languages', title: 'Method: languages', href: '/method-languages' },
+          { id: 'method-language-support', title: 'Language support', href: '/method-language-support' },
+        ],
+      },
       { id: 'get-languages', title: 'Get languages', href: '/get-languages' },
       { id: 'post-languages', title: 'Post languages', href: '/post-languages' },
       { id: 'detect-languages', title: 'Detect languages', href: '/detect-languages' },
-      { id: 'translate-html', title: 'Translate html', href: '/translate-html' },
+      { id: 'translate-html', title: 'Translate HTML', href: '/translate-html' },
     ],
   },
 ];
@@ -56,7 +62,7 @@ interface DocumentationSidebarProps {
 }
 
 export function DocumentationSidebar({ currentPath, onNavigate, className }: DocumentationSidebarProps) {
-  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set(['overview', 'reference']));
+  const [expandedItems, setExpandedItems] = React.useState<Set<string>>(new Set(['overview', 'reference', 'google-migration', 'google-migration-guide']));
 
   const toggleExpanded = (id: string) => {
     const newExpanded = new Set(expandedItems);
@@ -95,11 +101,38 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
               )
             )}
           </div>
+        ) : level === 1 ? (
+          <div
+            className={cn(
+              "flex items-center justify-between w-full p-2 text-left text-sm transition-colors",
+              "ml-6 border-l border-sidebar-border pl-4",
+              hasChildren ? "cursor-pointer select-none" : "",
+              isActive && !hasChildren
+                ? "bg-primary text-primary-foreground font-medium rounded-md"
+                : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
+            )}
+            onClick={() => {
+              if (hasChildren) {
+                toggleExpanded(item.id);
+              } else if (item.href) {
+                onNavigate(item.href);
+              }
+            }}
+          >
+            <span>{item.title}</span>
+            {hasChildren && (
+              isExpanded ? (
+                <ChevronDown className="h-3 w-3 text-sidebar-foreground/60 flex-shrink-0" />
+              ) : (
+                <ChevronRight className="h-3 w-3 text-sidebar-foreground/60 flex-shrink-0" />
+              )
+            )}
+          </div>
         ) : (
           <button
             className={cn(
               "flex items-center w-full p-2 text-left text-sm rounded-md transition-colors",
-              "ml-6 border-l border-sidebar-border pl-4",
+              "ml-12 border-l border-sidebar-border pl-4",
               isActive
                 ? "bg-primary text-primary-foreground font-medium"
                 : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
