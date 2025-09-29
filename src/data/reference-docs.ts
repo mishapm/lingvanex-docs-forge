@@ -1,6 +1,8 @@
 export const referenceDocumentation: Record<string, string> = {
   '/getting-languages': `# Getting the List of Languages
 
+**GET** https://api-b2b.backenster.com/b1/api/v3/getLanguages
+
 ## Query Params
 
 **platform**
@@ -30,21 +32,42 @@ Authorization error. You should add the API_KEY to request which can be created 
 <details>
 <summary>Shell</summary>
 
+**Request:**
 \`\`\`bash
-curl -X GET "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB" \\
+curl -X GET "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB" \\
   -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY"
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
 \`\`\`
 </details>
 
 <details>
 <summary>Node</summary>
 
+**Request:**
 \`\`\`javascript
 const axios = require('axios');
 
 const options = {
   method: 'GET',
-  url: 'https://api-b2b.backenster.com/b1/api/v3/languages',
+  url: 'https://api-b2b.backenster.com/b1/api/v3/getLanguages',
   params: {
     platform: 'api',
     code: 'en_GB'
@@ -60,16 +83,36 @@ axios.request(options).then(function (response) {
   console.error(error);
 });
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>Ruby</summary>
 
+**Request:**
 \`\`\`ruby
 require 'net/http'
 require 'uri'
 
-uri = URI('https://api-b2b.backenster.com/b1/api/v3/languages')
+uri = URI('https://api-b2b.backenster.com/b1/api/v3/getLanguages')
 uri.query = URI.encode_www_form({
   platform: 'api',
   code: 'en_GB'
@@ -84,17 +127,37 @@ request['Authorization'] = 'Lingvanex-Auth-Key YOUR_API_KEY'
 response = http.request(request)
 puts response.body
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>PHP</summary>
 
+**Request:**
 \`\`\`php
 <?php
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB",
+  CURLOPT_URL => "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_HTTPHEADER => [
     "Authorization: Lingvanex-Auth-Key YOUR_API_KEY"
@@ -107,15 +170,35 @@ curl_close($curl);
 echo $response;
 ?>
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>Swift</summary>
 
+**Request:**
 \`\`\`swift
 import Foundation
 
-let url = URL(string: "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB")!
+let url = URL(string: "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB")!
 var request = URLRequest(url: url)
 request.setValue("Lingvanex-Auth-Key YOUR_API_KEY", forHTTPHeaderField: "Authorization")
 
@@ -127,11 +210,31 @@ let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
 task.resume()
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>C</summary>
 
+**Request:**
 \`\`\`c
 #include <stdio.h>
 #include <curl/curl.h>
@@ -142,7 +245,7 @@ int main(void) {
 
     curl = curl_easy_init();
     if(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB");
         
         struct curl_slist *headers = NULL;
         headers = curl_slist_append(headers, "Authorization: Lingvanex-Auth-Key YOUR_API_KEY");
@@ -155,11 +258,31 @@ int main(void) {
     return 0;
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>C#</summary>
 
+**Request:**
 \`\`\`csharp
 using System;
 using System.Net.Http;
@@ -173,9 +296,28 @@ class Program
     {
         client.DefaultRequestHeaders.Add("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY");
         
-        string response = await client.GetStringAsync("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        string response = await client.GetStringAsync("https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB");
         Console.WriteLine(response);
     }
+}
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
 }
 \`\`\`
 </details>
@@ -183,6 +325,7 @@ class Program
 <details>
 <summary>C++</summary>
 
+**Request:**
 \`\`\`cpp
 #include <iostream>
 #include <curl/curl.h>
@@ -199,7 +342,7 @@ int main() {
 
     curl = curl_easy_init();
     if(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB");
+        curl_easy_setopt(curl, CURLOPT_URL, "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB");
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
         
@@ -216,26 +359,66 @@ int main() {
     return 0;
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>Clojure</summary>
 
+**Request:**
 \`\`\`clojure
 (require '[clj-http.client :as client])
 
 (def response 
-  (client/get "https://api-b2b.backenster.com/b1/api/v3/languages"
+  (client/get "https://api-b2b.backenster.com/b1/api/v3/getLanguages"
               {:query-params {:platform "api" :code "en_GB"}
                :headers {"Authorization" "Lingvanex-Auth-Key YOUR_API_KEY"}}))
 
 (println (:body response))
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
 \`\`\`
 </details>
 
 <details>
 <summary>Go</summary>
 
+**Request:**
 \`\`\`go
 package main
 
@@ -246,7 +429,7 @@ import (
 )
 
 func main() {
-    url := "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"
+    url := "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB"
     
     req, _ := http.NewRequest("GET", url, nil)
     req.Header.Add("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
@@ -258,21 +441,61 @@ func main() {
     fmt.Println(string(body))
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>HTTP</summary>
 
+**Request:**
 \`\`\`http
-GET /b1/api/v3/languages?platform=api&code=en_GB HTTP/1.1
+GET /b1/api/v3/getLanguages?platform=api&code=en_GB HTTP/1.1
 Host: api-b2b.backenster.com
 Authorization: Lingvanex-Auth-Key YOUR_API_KEY
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
 \`\`\`
 </details>
 
 <details>
 <summary>Java</summary>
 
+**Request:**
 \`\`\`java
 import java.io.IOException;
 import java.net.URI;
@@ -284,7 +507,7 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"))
+                .uri(URI.create("https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB"))
                 .header("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
                 .build();
 
@@ -293,13 +516,33 @@ public class Main {
     }
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>JavaScript</summary>
 
+**Request:**
 \`\`\`javascript
-const url = 'https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB';
+const url = 'https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB';
 const options = {
   method: 'GET',
   headers: {
@@ -312,15 +555,35 @@ fetch(url, options)
   .then(json => console.log(json))
   .catch(err => console.error('error:' + err));
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>JSON</summary>
 
+**Request:**
 \`\`\`json
 {
   "method": "GET",
-  "url": "https://api-b2b.backenster.com/b1/api/v3/languages",
+  "url": "https://api-b2b.backenster.com/b1/api/v3/getLanguages",
   "params": {
     "platform": "api",
     "code": "en_GB"
@@ -330,11 +593,31 @@ fetch(url, options)
   }
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>Kotlin</summary>
 
+**Request:**
 \`\`\`kotlin
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -343,7 +626,7 @@ fun main() {
     val client = OkHttpClient()
     
     val request = Request.Builder()
-        .url("https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB")
+        .url("https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB")
         .addHeader("Authorization", "Lingvanex-Auth-Key YOUR_API_KEY")
         .build()
     
@@ -352,17 +635,37 @@ fun main() {
     }
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>Objective_C</summary>
 
+**Request:**
 \`\`\`objc
 #import <Foundation/Foundation.h>
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSURL *url = [NSURL URLWithString:@"https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB"];
+        NSURL *url = [NSURL URLWithString:@"https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         [request setValue:@"Lingvanex-Auth-Key YOUR_API_KEY" forHTTPHeaderField:@"Authorization"];
         
@@ -381,16 +684,36 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>OCaml</summary>
 
+**Request:**
 \`\`\`ocaml
 open Lwt.Infix
 
 let get_languages () =
-  let uri = Uri.of_string "https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB" in
+  let uri = Uri.of_string "https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB" in
   let headers = Cohttp.Header.init_with "Authorization" "Lingvanex-Auth-Key YOUR_API_KEY" in
   Cohttp_lwt_unix.Client.get ~headers uri >>= fun (resp, body) ->
   Cohttp_lwt.Body.to_string body >|= fun body_string ->
@@ -398,48 +721,127 @@ let get_languages () =
 
 let () = Lwt_main.run (get_languages ())
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>PowerShell</summary>
 
+**Request:**
 \`\`\`powershell
 $headers = @{
     'Authorization' = 'Lingvanex-Auth-Key YOUR_API_KEY'
 }
 
-$response = Invoke-RestMethod -Uri 'https://api-b2b.backenster.com/b1/api/v3/languages?platform=api&code=en_GB' -Method Get -Headers $headers
+$response = Invoke-RestMethod -Uri 'https://api-b2b.backenster.com/b1/api/v3/getLanguages?platform=api&code=en_GB' -Method Get -Headers $headers
 $response | ConvertTo-Json
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
 \`\`\`
 </details>
 
 <details>
 <summary>Python</summary>
 
+**Request:**
 \`\`\`python
 import requests
 
-url = "https://api-b2b.backenster.com/b1/api/v3/languages"
+url = "https://api-b2b.backenster.com/b1/api/v3/getLanguages"
 querystring = {"platform": "api", "code": "en_GB"}
 headers = {"Authorization": "Lingvanex-Auth-Key YOUR_API_KEY"}
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 print(response.text)
 \`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
+\`\`\`
 </details>
 
 <details>
 <summary>R</summary>
 
+**Request:**
 \`\`\`r
 library(httr)
 
-url <- "https://api-b2b.backenster.com/b1/api/v3/languages"
+url <- "https://api-b2b.backenster.com/b1/api/v3/getLanguages"
 headers <- add_headers(Authorization = "Lingvanex-Auth-Key YOUR_API_KEY")
 query <- list(platform = "api", code = "en_GB")
 
 response <- GET(url, headers, query = query)
 content(response, "text")
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "err": null,
+  "result": [
+    {
+      "code": "af_ZA",
+      "englishName": "Afrikaans",
+      "nativeName": "Afrikaans"
+    },
+    {
+      "code": "ar_SA",
+      "englishName": "Arabic",
+      "nativeName": "العربية"
+    }
+  ]
+}
 \`\`\`
 </details>
 `,
