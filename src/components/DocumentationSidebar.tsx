@@ -40,6 +40,7 @@ const sidebarStructure: SidebarItem[] = [
       {
         id: 'google-migration-guide',
         title: 'Switching from Google Translate to Lingvanex Translator',
+        href: '/google-migration-guide',
         children: [
           { id: 'method-translate', title: 'Method: translate', href: '/method-translate' },
           { id: 'method-detect', title: 'Method: detect', href: '/method-detect' },

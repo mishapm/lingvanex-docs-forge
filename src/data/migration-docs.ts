@@ -1,4 +1,21 @@
 export const migrationDocumentation: Record<string, string> = {
+  '/google-migration-guide': `# Switching from Google Translate to Lingvanex Translator
+
+To switch from Google Translate to Lingvanex Translator you just need to change your HTTP request from \`https://translation.googleapis.com/\` to \`https://api-gl.lingvanex.com/\`
+
+All settings in Lingvanex Translator are exactly the same as in Google Translate.
+
+More information can be found in the documentation.
+
+## References to documentation
+
+[**Method: translate**](/method-translate)
+
+[**Method: detect**](/method-detect)
+
+[**Method: languages**](/method-languages)
+
+[**Language support**](/method-language-support)`,
   '/method-translate': `# Method translate
 
 Translates input text, returning translated text.
