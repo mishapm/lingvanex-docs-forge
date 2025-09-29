@@ -146,7 +146,77 @@ JSON representation
     }
   ]
 ]
-\`\`\``
+\`\`\``,
+  
+  '/method-languages': `# Method languages
+
+Returns a list of supported languages for translation.
+
+## HTTP request
+
+\`GET https://api-gl.lingvanex.com/language/translate/v2/languages\`
+
+## Query parameters
+
+| Parameters | Description |
+| --- | --- |
+| **target** | **string**<br>The target language code for the results. If specified, then the language names are returned in the name field of the response, localized in the target language. If you do not supply a target language, then the name field is omitted from the response and only the language codes are returned. |
+| **model** | **string**<br>Not optional, does not affect anything. |
+| **key** | **string**<br>A valid API key to handle requests for this API. |
+
+## Response body
+
+If successful, the response body contains data with the following structure:
+
+JSON representation
+
+\`\`\`json
+{
+  "data": {
+    object(GetSupportedLanguagesResponseList)
+  }
+}
+\`\`\`
+
+| Fields | Description |
+| --- | --- |
+| **data** | **object(GetSupportedLanguagesResponseList)**<br>A list of supported language responses. This list will contain an entry for each language supported by the Translation API. |
+
+## GetSupportedLanguagesResponseList
+
+A response list contains a list of separate supported language responses.
+
+JSON representation
+
+\`\`\`json
+{
+  "languages": [
+    array
+  ]
+}
+\`\`\`
+
+| Fields | Description |
+| --- | --- |
+| **languages[]** | **array (GetSupportedLanguagesResponseLanguage)**<br>Contains list of supported languages information. |
+
+## GetSupportedLanguagesResponseLanguage
+
+Contains supported languages information.
+
+JSON representation
+
+\`\`\`json
+{
+  "language": string,
+  "name": string
+}
+\`\`\`
+
+| Fields | Description |
+| --- | --- |
+| **language** | **string**<br>Supported language code. Usually refers to an ISO 639-1 language code. |
+| **name** | **string**<br>Human readable name of the language localized in the target language. |`
 };
 
 export default migrationDocumentation;
