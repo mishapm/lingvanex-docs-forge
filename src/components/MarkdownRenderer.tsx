@@ -6,6 +6,7 @@ import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/pris
 import { useTheme } from './ThemeProvider';
 import { cn } from '@/lib/utils';
 import { Copy, Check } from 'lucide-react';
+import { ApiEndpoint } from './ApiEndpoint';
 
 interface MarkdownRendererProps {
   content: string;
@@ -72,11 +73,68 @@ function CodeBlock({ children, className, ...props }: any) {
 }
 
 export function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
-  return (
-    <div className={cn("prose prose-slate dark:prose-invert max-w-none", className)}>
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
+  // Process content to handle ApiEndpoint components
+  const processContent = (text: string) => {
+    const apiEndpointRegex = /<ApiEndpoint\s+method="([^"]+)"\s+url="([^"]+)"\s*\/>/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = apiEndpointRegex.exec(text)) !== null) {
+      // Add text before the match
+      if (match.index > lastIndex) {
+        const beforeText = text.slice(lastIndex, match.index);
+        if (beforeText.trim()) {
+          parts.push(
+            <ReactMarkdown
+              key={`text-${lastIndex}`}
+              remarkPlugins={[remarkGfm]}
+              components={markdownComponents}
+            >
+              {beforeText}
+            </ReactMarkdown>
+          );
+        }
+      }
+      
+      // Add the ApiEndpoint component
+      parts.push(<ApiEndpoint key={`api-${match.index}`} method={match[1]} url={match[2]} />);
+      
+      lastIndex = match.index + match[0].length;
+    }
+    
+    // Add remaining text
+    if (lastIndex < text.length) {
+      const remainingText = text.slice(lastIndex);
+      if (remainingText.trim()) {
+        parts.push(
+          <ReactMarkdown
+            key={`text-${lastIndex}`}
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
+          >
+            {remainingText}
+          </ReactMarkdown>
+        );
+      }
+    }
+    
+    // If no ApiEndpoint found, return normal markdown
+    if (parts.length === 0) {
+      return (
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={markdownComponents}
+        >
+          {text}
+        </ReactMarkdown>
+      );
+    }
+    
+    return <>{parts}</>;
+  };
+
+  const markdownComponents = {
           code: CodeBlock,
           div: ({ children, style, ...props }) => (
             <div 
@@ -174,10 +232,11 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
               {children}
             </a>
           ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+  };
+
+  return (
+    <div className={cn("prose prose-slate dark:prose-invert max-w-none", className)}>
+      {processContent(content)}
     </div>
   );
 }

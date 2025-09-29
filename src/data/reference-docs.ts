@@ -1,7 +1,7 @@
 export const referenceDocumentation: Record<string, string> = {
   '/getting-languages': `# Getting the List of Languages
 
-**GET** https://api-b2b.backenster.com/b1/api/v3/getLanguages
+<ApiEndpoint method="GET" url="https://api-b2b.backenster.com/b1/api/v3/getLanguages" />
 
 ## Query Params
 
@@ -847,7 +847,7 @@ content(response, "text")
 `,
   '/translate': `# Translate Text
 
-**POST** https://api-b2b.backenster.com/b1/api/v3/translate
+<ApiEndpoint method="POST" url="https://api-b2b.backenster.com/b1/api/v3/translate" />
 
 ## URL Parameters
 
