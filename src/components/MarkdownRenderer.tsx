@@ -53,7 +53,7 @@ function CodeBlock({ children, className, ...props }: any) {
       <SyntaxHighlighter
         style={theme === 'dark' ? oneDark : oneLight}
         language={language}
-        PreTag="div"
+        PreTag="pre"
         customStyle={{
           margin: 0,
           borderRadius: 0,
@@ -61,8 +61,8 @@ function CodeBlock({ children, className, ...props }: any) {
           lineHeight: '1.5',
           border: 'none',
           outline: 'none',
-          background: 'transparent',
         }}
+        codeTagProps={{ style: { background: 'transparent' } }}
         {...props}
       >
         {String(children).replace(/\n$/, '')}
