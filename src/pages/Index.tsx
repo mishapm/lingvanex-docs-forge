@@ -5,12 +5,14 @@ import { SearchBar } from '@/components/SearchBar';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { MobileMenu } from '@/components/MobileMenu';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { LanguageCodeExamples } from '@/components/LanguageCodeExamples';
 import { DocumentationNavigation } from '@/components/DocumentationNavigation';
 import { TableOfContents } from '@/components/TableOfContents';
 import { cn } from '@/lib/utils';
 import documentationContent from '@/data/documentation';
 import referenceDocumentation from '@/data/reference-docs';
 import migrationDocumentation from '@/data/migration-docs';
+import { translateExamples } from '@/data/translate-examples';
 
 const allDocumentation = {
   ...documentationContent,
@@ -72,6 +74,9 @@ const Index = () => {
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
+              {currentPath === '/translate' && (
+                <LanguageCodeExamples examples={translateExamples} />
+              )}
               <DocumentationNavigation 
                 currentPath={currentPath}
                 onNavigate={handleNavigate}
