@@ -74,139 +74,166 @@ curl -X POST https://api-b2b.backenster.com/b1/api/v3/translate \\
 
   '/language-support': `# Language Support
 
-Lingvanex Translator Service supports translation between 100+ languages, including major world languages and regional variants. Our service provides comprehensive coverage for global translation needs.
+## Translation   
 
-## Supported Language Codes
+The Translation API's recognition engine supports a wide variety of languages for the Neural Machine Translation (NMT) model.
 
-The API uses ISO language codes with country variants for precise language targeting:
+These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to (language\_COUNTRY) identifiers, except where noted.
 
-### Major Languages
+Translations from any language to any language in this list are supported. The list is updated as new languages are added. In column \`Direction text supported\` \`ltr\` means "left to right" and \`rtl\` means "right to left" direction.
 
-| Language | Code | Name |
-|----------|------|------|
-| English (UK) | \`en_GB\` | English (United Kingdom) |
-| English (US) | \`en_US\` | English (United States) |
-| German | \`de_DE\` | German (Germany) |
-| French | \`fr_FR\` | French (France) |
-| Spanish | \`es_ES\` | Spanish (Spain) |
-| Russian | \`ru_RU\` | Russian (Russia) |
-| Chinese (Simplified) | \`zh_CN\` | Chinese (China) |
-| Chinese (Traditional) | \`zh_TW\` | Chinese (Taiwan) |
-| Japanese | \`ja_JP\` | Japanese (Japan) |
-| Korean | \`ko_KR\` | Korean (South Korea) |
-| Italian | \`it_IT\` | Italian (Italy) |
-| Portuguese | \`pt_PT\` | Portuguese (Portugal) |
-| Portuguese (Brazil) | \`pt_BR\` | Portuguese (Brazil) |
-| Dutch | \`nl_NL\` | Dutch (Netherlands) |
-| Arabic | \`ar_SA\` | Arabic (Saudi Arabia) |
+| Language | Language code | Direction text supported |
+| --- | --- | --- |
+| Afrikaans | af\_ZA | ltr |
+| Albanian | sq\_AL | ltr |
+| Amharic | am\_ET | ltr |
+| Arabic | ar\_SA | rtl |
+| Armenian | hy\_AM | ltr |
+| Azerbaijani | az\_AZ | ltr |
+| Basque | eu\_ES | ltr |
+| Belarusian | be\_BY | ltr |
+| Bengali | bn\_BD | ltr |
+| Bosnian | bs\_BA | ltr |
+| Bulgarian | bg\_BG | ltr |
+| Catalan | ca\_ES | ltr |
+| Cebuano | ceb\_PH | ltr |
+| Chinese (Simplified) | zh-Hans\_CN | ltr |
+| Chinese (Traditional) | zh-Hant\_TW | ltr |
+| Corsican | co\_FR | ltr |
+| Croatian | hr\_HR | ltr |
+| Czech | cs\_CZ | ltr |
+| Danish | da\_DK | ltr |
+| Dutch | nl\_NL | ltr |
+| English | en\_US | ltr |
+| Esperanto | eo\_WORLD | ltr |
+| Estonian | et\_EE | ltr |
+| Finnish | fi\_FI | ltr |
+| French | fr\_FR | ltr |
+| Frisian | fy\_NL | ltr |
+| Galician | gl\_ES | ltr |
+| Georgian | ka\_GE | ltr |
+| German | de\_DE | ltr |
+| Greek | el\_GR | ltr |
+| Gujarati | gu\_IN | ltr |
+| Haitian Creole | ht\_HT | ltr |
+| Hausa | ha\_NE | ltr |
+| Hawaiian | haw\_US | ltr |
+| Hebrew | he\_IL | rtl |
+| Hindi | hi\_IN | ltr |
+| Hmong | hmn\_CN | ltr |
+| Hungarian | hu\_HU | ltr |
+| Icelandic | is\_IS | ltr |
+| Igbo | ig\_NG | ltr |
+| Indonesian | id\_ID | ltr |
+| Irish | ga\_IE | ltr |
+| Italian | it\_IT | ltr |
+| Japanese | ja\_JP | ltr |
+| Javanese | jv\_ID | ltr |
+| Kannada | kn\_IN | ltr |
+| Kazakh | kk\_KZ | ltr |
+| Khmer | km\_KH | ltr |
+| Kinyarwanda | rw\_RW | ltr |
+| Korean | ko\_KR | ltr |
+| Kurdish (Kurmanji) | ku\_IR | ltr |
+| Kyrgyz | ky\_KG | ltr |
+| Lao | lo\_LA | ltr |
+| Latin | la\_VAT | ltr |
+| Latvian | lv\_LV | ltr |
+| Lithuanian | lt\_LT | ltr |
+| Luxembourgish | lb\_LU | ltr |
+| Macedonian | mk\_MK | ltr |
+| Malagasy | mg\_MG | ltr |
+| Malay | ms\_MY | ltr |
+| Malayalam | ml\_IN | ltr |
+| Maltese | mt\_MT | ltr |
+| Maori | mi\_NZ | ltr |
+| Marathi | mr\_IN | ltr |
+| Mongolian | mn\_MN | ltr |
+| Myanmar (Burmese) | my\_MM | ltr |
+| Nepali | ne\_NP | ltr |
+| Nyanja (Chichewa) | ny\_MW | ltr |
+| Norwegian | no\_NO | ltr |
+| Odia (Oriya) | or\_OR | ltr |
+| Pashto | ps\_AF | rtl |
+| Persian (Iranian) | fa\_IR | rtl |
+| Polish | pl\_PL | ltr |
+| Portuguese (Brazil) | pt\_BR | ltr |
+| Portuguese (Portugal) | pt\_PT | ltr |
+| Punjabi (Panjabi) | pa\_PK | ltr |
+| Romanian | ro\_RO | ltr |
+| Russian | ru\_RU | ltr |
+| Samoan | sm\_WS | ltr |
+| Scots Gaelic | gd\_GB | ltr |
+| Serbian (Cyrillic) | sr-Cyrl\_RS | ltr |
+| Sesotho | st\_LS | ltr |
+| Shona | sn\_ZW | ltr |
+| Sindhi | sd\_PK | rtl |
+| Sinhala | si\_LK | ltr |
+| Slovak | sk\_SK | ltr |
+| Slovenian | sl\_SI | ltr |
+| Somali | so\_SO | ltr |
+| Spanish | es\_ES | ltr |
+| Sundanese | su\_ID | ltr |
+| Swahili | sw\_TZ | ltr |
+| Swedish | sv\_SE | ltr |
+| Tagalog (Filipino) | tl\_PH | ltr |
+| Tajik | tg\_TJ | ltr |
+| Tamil | ta\_IN | ltr |
+| Tatar | tt\_TT | ltr |
+| Telugu | te\_IN | ltr |
+| Thai | th\_TH | ltr |
+| Turkish | tr\_TR | ltr |
+| Turkmen | tk\_TM | ltr |
+| Ukrainian | uk\_UA | ltr |
+| Urdu | ur\_PK | rtl |
+| Uyghur | ug\_CN | rtl |
+| Uzbek | uz\_UZ | ltr |
+| Vietnamese | vi\_VN | ltr |
+| Welsh | cy\_GB | ltr |
+| Xhosa | xh\_ZA | ltr |
+| Yiddish | yi\_IL | rtl |
+| Yoruba | yo\_NG | ltr |
+| Zulu | zu\_ZA | ltr |
 
-### European Languages
+## Transliteration   
 
-| Language | Code | Name |
-|----------|------|------|
-| Polish | \`pl_PL\` | Polish (Poland) |
-| Czech | \`cs_CZ\` | Czech (Czech Republic) |
-| Swedish | \`sv_SE\` | Swedish (Sweden) |
-| Norwegian | \`no_NO\` | Norwegian (Norway) |
-| Danish | \`da_DK\` | Danish (Denmark) |
-| Finnish | \`fi_FI\` | Finnish (Finland) |
-| Greek | \`el_GR\` | Greek (Greece) |
-| Hungarian | \`hu_HU\` | Hungarian (Hungary) |
-| Romanian | \`ro_RO\` | Romanian (Romania) |
-| Bulgarian | \`bg_BG\` | Bulgarian (Bulgaria) |
+The Transliterate operation in the Text Translation feature supports the following languages. In the "To/From", "<-->" indicates that the language can be transliterated from or to either of the scripts listed. The "-->" indicates that the language can only be transliterated from one script to the other.
 
-### Asian Languages
-
-| Language | Code | Name |
-|----------|------|------|
-| Hindi | \`hi_IN\` | Hindi (India) |
-| Thai | \`th_TH\` | Thai (Thailand) |
-| Vietnamese | \`vi_VN\` | Vietnamese (Vietnam) |
-| Indonesian | \`id_ID\` | Indonesian (Indonesia) |
-| Malay | \`ms_MY\` | Malay (Malaysia) |
-| Hebrew | \`he_IL\` | Hebrew (Israel) |
-| Turkish | \`tr_TR\` | Turkish (Turkey) |
-
-## Getting Language List Programmatically
-
-You can retrieve the complete list of supported languages using our API:
-
-\`\`\`bash
-curl -X GET "https://api-b2b.backenster.com/b1/api/v3/languages" \\
-  -H "Authorization: Lingvanex-Auth-Key YOUR_API_KEY" \\
-  -H "Accept: application/json"
-\`\`\`
-
-**Response:**
-\`\`\`json
-{
-  "err": null,
-  "result": [
-    {
-      "code": "en_GB",
-      "name": "English (United Kingdom)",
-      "nativeName": "English"
-    },
-    {
-      "code": "de_DE", 
-      "name": "German (Germany)",
-      "nativeName": "Deutsch"
-    },
-    {
-      "code": "fr_FR",
-      "name": "French (France)", 
-      "nativeName": "Français"
-    }
-  ]
-}
-\`\`\`
-
-## Language Detection
-
-If you're unsure about the source language, you can use our language detection feature:
-
-\`\`\`json
-POST https://api-b2b.backenster.com/b1/api/v3/detect
-Authorization: Lingvanex-Auth-Key YOUR_API_KEY
-Content-Type: application/json
-
-{
-  "platform": "api",
-  "data": "Bonjour le monde!"
-}
-\`\`\`
-
-**Response:**
-\`\`\`json
-{
-  "err": null,
-  "result": {
-    "language": "fr_FR",
-    "confidence": 0.99
-  }
-}
-\`\`\`
-
-## Regional Variants
-
-Many languages have regional variants that differ in vocabulary, spelling, or cultural context:
-
-- **English**: \`en_US\` (American) vs \`en_GB\` (British)
-- **Portuguese**: \`pt_PT\` (European) vs \`pt_BR\` (Brazilian) 
-- **Spanish**: \`es_ES\` (Spain) vs \`es_MX\` (Mexico)
-- **Chinese**: \`zh_CN\` (Simplified) vs \`zh_TW\` (Traditional)
-
-Choose the appropriate variant based on your target audience for the most accurate cultural and linguistic adaptation.
-
-## Translation Quality
-
-Our translation quality varies by language pair:
-
-- **Tier 1**: Major language pairs (EN-DE, EN-FR, EN-ES, etc.) - Highest quality
-- **Tier 2**: Common language pairs - High quality  
-- **Tier 3**: Less common pairs - Good quality with continuous improvements
-
-For the most up-to-date language support and quality information, please refer to our [API reference](/getting-languages).`,
+| Language | Language code | Script | To/From | Script |
+| --- | --- | --- | --- | --- |
+| Arabic | ar\_SA | Arabic (Arab) | <--> | Latin (Latn) |
+| Bengali | bn\_BD | Bengali (Beng) | <--> | Latin (Latn) |
+| Belarusian | be\_BY | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Bulgarian | bg\_BG | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Chinese (Simplified) | zh-Hans\_CN | Chinese (Simplified Hans) | <--> | Latin (Latn) |
+| Chinese (Traditional) | zh-Hant\_TW | Chinese (Simplified Hans) | <--> | Latin (Latn) |
+| Greek | el\_GR | Greek (Grek) | <--> | Latin (Latn) |
+| Gujarati | gu\_IN | Gujarati (Gujr) | <--> | Latin (Latn) |
+| Hebrew | he\_IL | Hebrew (Hebr) | <--> | Latin (Latn) |
+| Hindi | hi\_IN | Devanagari (Deva) | <--> | Latin (Latn) |
+| Japanese | ja\_JP | Japanese (Jpan) | <--> | Latin (Latn) |
+| Kannada | kn\_IN | Kannada (Knda) | <--> | Latin (Latn) |
+| Kazakh | kk\_KZ | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Korean | ko\_KR | Korean (Kore) | <--> | Latin (Latn) |
+| Kyrgyz | ky\_KG | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Macedonian | mk\_MK | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Malayalam | ml\_IN | Malayalam (Mlym) | <--> | Latin (Latn) |
+| Marathi | mr\_IN | Devanagari (Deva) | <--> | Latin (Latn) |
+| Mongolian | mn\_MN | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Odia (Oriya) | or\_OR | Oriya (Orya) | <--> | Latin (Latn) |
+| Persian (Iranian) | fa\_IR | Arabic (Arab) | <--> | Latin (Latn) |
+| Punjabi (Panjabi) | pa\_PK | Gurmukhi (Guru) | <--> | Latin (Latn) |
+| Russian | ru\_RU | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Serbian (Cyrillic) | sr-Cyrl\_RS | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Sindhi | sd\_PK | Arabic (Arab) | <--> | Latin (Latn) |
+| Sinhala | si\_LK | Sinhala (Sinh) | <--> | Latin (Latn) |
+| Tajik | tg\_TJ | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Tamil | ta\_IN | Tamil (Taml) | <--> | Latin (Latn) |
+| Tatar | tt\_TT | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Telugu | te\_IN | Telugu (Telu) | <--> | Latin (Latn) |
+| Thai | th\_TH | Thai (Thai) | <--> | Latin (Latn) |
+| Ukrainian | uk\_UA | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Urdu | ur\_PK | Arabic (Arab) | <--> | Latin (Latn) |`,
 
   '/pricing': `# Pricing
 
