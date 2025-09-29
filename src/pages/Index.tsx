@@ -37,7 +37,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background flex w-full">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:block w-64 bg-sidebar border-r border-sidebar-border flex-shrink-0">
+      <aside className="hidden md:block fixed left-0 top-0 w-64 h-screen bg-sidebar border-r border-sidebar-border z-20">
         <DocumentationSidebar 
           currentPath={currentPath}
           onNavigate={handleNavigate}
@@ -45,7 +45,7 @@ const Index = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 md:ml-64">
         {/* Header */}
         <header className="bg-background border-b border-border px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
