@@ -72,7 +72,81 @@ JSON representation
 | --- | --- |
 | **detectedSourceLanguage** | **string**<br>The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be omitted. |
 | **model** | **string**<br>The translation model. Cloud Translation – Basic offers only the nmt Neural Machine Translation (NMT) model.<br>If you did not include a model parameter with your request, then this field is not included in the response. |
-| **translatedText** | **string**<br>Text translated into the target language. |`
+| **translatedText** | **string**<br>Text translated into the target language. |`,
+  
+  '/method-detect': `# Method detect
+
+Detects the language of text within a request.
+
+## HTTP request
+
+\`POST https://api-gl.lingvanex.com/language/translate/v2/detect\`
+
+## Query parameters
+
+| Parameters | Description |
+| --- | --- |
+| **q** | **string** (Required)<br>The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. |
+| **key** | **string**<br>A valid API key to handle requests for this API. |
+
+## Response body
+
+If successful, the response body contains data with the following structure:
+
+JSON representation
+
+\`\`\`json
+{
+  "data": {
+    object(DetectLanguageResponseList)
+  }
+}
+\`\`\`
+
+| Fields | Description |
+| --- | --- |
+| **data** | **object (ListValue)**<br>The list of language detection responses. This list will contain a language detection response for each query (q) sent in the language detection request. |
+
+## DetectLanguageResponseList
+
+A response list contains a list of separate language detection responses.
+
+JSON representation
+
+\`\`\`json
+{
+  "detections": [
+    array
+  ]
+}
+\`\`\`
+
+| Fields | Description |
+| --- | --- |
+| **detections[]** | **array (ListValue format)**<br>Language detection results for each input text piece.<br>The detections ListValue includes the following values:<br>• **language (string)** - The detected language<br>• **isReliable (boolean)** - Deprecated Indicates whether the language detection result is reliable<br>• **confidence (float)** - Deprecated The confidence of the detection result for this language<br>★ We recommend not basing any decisions or thresholds on the isReliable or confidence values. |
+
+For example:
+
+JSON representation
+
+\`\`\`json
+"detections": [
+  [
+    {
+      "confidence": 1,
+      "language": "zh-Hant",
+      "isReliable": false
+    }
+  ],
+  [
+    {
+      "confidence": 1,
+      "language": "es",
+      "isReliable": false
+    }
+  ]
+]
+\`\`\``
 };
 
 export default migrationDocumentation;
