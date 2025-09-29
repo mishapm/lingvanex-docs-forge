@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronDown, ChevronRight, Book, Code, ArrowLeftRight, Globe, Settings, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import logo2 from '@/assets/logo2.png';
 
 interface SidebarItem {
   id: string;
@@ -90,7 +91,6 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
             onClick={() => hasChildren && toggleExpanded(item.id)}
           >
             <div className="flex items-center gap-2">
-              {item.icon && <item.icon className="h-4 w-4" />}
               <span className="font-medium">{item.title}</span>
             </div>
             {hasChildren && (
@@ -128,7 +128,10 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
   return (
     <nav className={cn("h-full overflow-y-auto py-4", className)}>
       <div className="px-4 mb-6">
-        <h2 className="text-lg font-semibold text-sidebar-foreground">API Documentation</h2>
+        <div className="flex items-center gap-2">
+          <img src={logo2} alt="Logo" className="h-6 w-6" />
+          <h2 className="text-lg font-semibold text-sidebar-foreground">API Documentation</h2>
+        </div>
       </div>
       <div className="px-4 space-y-2">
         {sidebarStructure.map((item) => renderSidebarItem(item))}

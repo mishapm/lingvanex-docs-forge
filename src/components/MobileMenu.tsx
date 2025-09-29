@@ -2,6 +2,7 @@ import React from 'react';
 import { X, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { DocumentationSidebar } from './DocumentationSidebar';
+import logo2 from '@/assets/logo2.png';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -48,7 +49,10 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
           )}>
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
-              <h2 className="text-lg font-semibold text-sidebar-foreground">API Documentation</h2>
+              <div className="flex items-center gap-2">
+                <img src={logo2} alt="Logo" className="h-6 w-6" />
+                <h2 className="text-lg font-semibold text-sidebar-foreground">API Documentation</h2>
+              </div>
               <button
                 onClick={onToggle}
                 className="p-1 rounded-md hover:bg-sidebar-accent transition-colors"
