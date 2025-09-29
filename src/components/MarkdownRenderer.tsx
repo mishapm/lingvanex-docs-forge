@@ -34,7 +34,7 @@ function CodeBlock({ children, className, ...props }: any) {
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group my-4 rounded-xl border border-border overflow-hidden">
       <button
         onClick={handleCopy}
         className={cn(
@@ -56,11 +56,12 @@ function CodeBlock({ children, className, ...props }: any) {
         PreTag="div"
         customStyle={{
           margin: 0,
-          borderRadius: '0.75rem',
+          borderRadius: 0,
           fontSize: '0.875rem',
           lineHeight: '1.5',
-          border: '1px solid hsl(var(--border))',
+          border: 'none',
           outline: 'none',
+          background: 'transparent',
         }}
         {...props}
       >
