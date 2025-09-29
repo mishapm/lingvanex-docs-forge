@@ -59,7 +59,7 @@ function CodeBlock({ children, className, ...props }: any) {
           borderRadius: '0.75rem',
           fontSize: '0.875rem',
           lineHeight: '1.5',
-          border: 'none',
+          border: '1px solid hsl(var(--border))',
           outline: 'none',
         }}
         {...props}
