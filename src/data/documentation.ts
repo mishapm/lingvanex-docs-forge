@@ -237,138 +237,15 @@ The Transliterate operation in the Text Translation feature supports the followi
 
   '/pricing': `# Pricing
 
-Lingvanex Translator Service offers flexible pricing plans to meet the needs of individuals, startups, and enterprises. Choose the plan that best fits your translation volume and requirements.
+## $5 per 1 million characters translation   
 
-## Free Tier
+The price of cloud API is $5 per 1 million characters translation.
 
-Perfect for testing and small projects:
+Custom pricing for more than 500 million characters per month.
 
-- **500 characters/month** included
-- Access to all 100+ languages
-- Standard translation quality
-- API key authentication
-- Email support
-- Rate limit: 10 requests/minute
+When you [create the API key](https://docs.lingvanex.com/reference/overview#try-the-lingvanex-translator-service-for-free) on the account page you receive 1$.
 
-## Professional Plans
-
-### Starter Plan - $19/month
-- **100,000 characters/month**
-- All Free tier features
-- Priority email support
-- Rate limit: 60 requests/minute
-- Usage analytics dashboard
-
-### Business Plan - $79/month
-- **500,000 characters/month**
-- All Starter plan features
-- Phone and email support
-- Rate limit: 180 requests/minute
-- Custom integrations support
-- SLA: 99.9% uptime
-
-### Enterprise Plan - Custom Pricing
-- **Unlimited characters**
-- Dedicated account manager
-- 24/7 priority support
-- Custom rate limits
-- On-premise deployment options
-- SLA: 99.95% uptime
-- Custom integrations and features
-
-## Pay-as-you-go
-
-For variable usage patterns:
-
-- **$0.20 per 1,000 characters**
-- No monthly commitment
-- All features included
-- Perfect for seasonal businesses
-- Scale automatically with demand
-
-## Character Counting
-
-Characters are counted as follows:
-
-- **Source text**: Each character in the input text counts toward your quota
-- **Whitespace**: Spaces and line breaks are counted
-- **HTML tags**: When translating HTML, only text content is counted (tags are excluded)
-- **Empty requests**: Failed requests don't count toward your quota
-
-### Example Character Count
-- "Hello, world!" = 13 characters
-- "Bonjour le monde!" = 17 characters
-
-## Getting Your API Key
-
-1. **Sign up** for a Lingvanex account at [lingvanex.com](https://lingvanex.com)
-2. **Verify your email** address
-3. **Choose your plan** or start with the free tier
-4. **Generate your API key** from the dashboard
-5. **Start translating** immediately
-
-## API Key Security
-
-⚠️ **Critical Security Information**:
-
-- Your API key is **secret** and should never be exposed in client-side code
-- Always make API calls from your **backend server**
-- Use environment variables to store your API key
-- Rotate your API key regularly for enhanced security
-- Monitor your usage dashboard for unexpected activity
-
-### Secure Implementation Example
-
-❌ **Never do this** (client-side exposure):
-\`\`\`javascript
-// WRONG - API key exposed in browser
-const apiKey = "your-secret-api-key";
-fetch("https://api-b2b.backenster.com/b1/api/v3/translate", {
-  headers: {
-    "Authorization": \`Lingvanex-Auth-Key \${apiKey}\`
-  }
-});
-\`\`\`
-
-✅ **Correct approach** (server-side):
-\`\`\`javascript
-// CORRECT - API key secured on server
-// Backend server code
-const apiKey = process.env.LINGVANEX_API_KEY;
-\`\`\`
-
-## Usage Monitoring
-
-Track your usage through:
-
-- **Dashboard analytics**: Real-time usage monitoring
-- **API headers**: Usage information returned in response headers
-- **Webhooks**: Automated notifications for quota limits
-- **Monthly reports**: Detailed usage breakdown via email
-
-## Billing
-
-- **Monthly billing**: Charges processed on the same date each month
-- **Prorated upgrades**: Immediate plan upgrades are prorated
-- **Overage charges**: Pay-as-you-go rates apply for usage beyond plan limits
-- **Currency**: All prices in USD
-- **Payment methods**: Credit card, PayPal, bank transfer (Enterprise)
-
-## FAQ
-
-### Can I change plans anytime?
-Yes, you can upgrade or downgrade at any time. Changes take effect immediately.
-
-### What happens if I exceed my quota?
-Requests will continue to work at pay-as-you-go rates ($0.20/1000 characters).
-
-### Do you offer refunds?
-We offer pro-rated refunds for downgrades and cancellations.
-
-### Is there a commitment?
-No long-term contracts required. Cancel anytime.
-
-Ready to get started? [Sign up now](https://lingvanex.com/signup) or check out our [API reference](/translate).`,
+So you can translate 200 000 characters for free.`,
 
   '/faq': `# Translator Service FAQ
 
