@@ -36,7 +36,7 @@ Watch this step-by-step guide on how to create your Lingvanex API key:
 
   '/language-support': `# Language Support
 
-## Translation   
+## Translation
 
 The Translation API's recognition engine supports a wide variety of languages for the Neural Machine Translation (NMT) model.
 
@@ -157,7 +157,7 @@ Translations from any language to any language in this list are supported. The l
 | Yoruba | yo\_NG | ltr |
 | Zulu | zu\_ZA | ltr |
 
-## Transliteration   
+## Transliteration
 
 The Transliterate operation in the Text Translation feature supports the following languages. In the "To/From", "<-->" indicates that the language can be transliterated from or to either of the scripts listed. The "-->" indicates that the language can only be transliterated from one script to the other.
 
