@@ -105,9 +105,9 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
         ) : level === 1 ? (
           <div
             className={cn(
-              "flex items-center justify-between w-full p-2 text-left text-sm transition-colors",
+              "flex items-center justify-between w-full p-2 text-left text-sm transition-colors cursor-pointer",
               "ml-6 border-l border-sidebar-border pl-4",
-              hasChildren ? "cursor-pointer select-none" : "",
+              hasChildren ? "select-none" : "",
               isActive && !hasChildren
                 ? "bg-primary text-primary-foreground font-medium rounded-md"
                 : "hover:bg-sidebar-accent text-sidebar-foreground/80 hover:text-sidebar-foreground"
@@ -132,7 +132,7 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
         ) : (
           <button
             className={cn(
-              "flex items-center w-full p-2 text-left text-sm rounded-md transition-colors",
+              "flex items-center w-full p-2 text-left text-sm rounded-md transition-colors cursor-pointer",
               "ml-12 border-l border-sidebar-border pl-4",
               isActive
                 ? "bg-primary text-primary-foreground font-medium"
