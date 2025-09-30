@@ -357,15 +357,29 @@ Translations from any language to any language in this list are supported. The l
 
   '/get-languages': `# Get languages
 
-## HTTP request
-
-\`GET https://api-gl.lingvanex.com/language/translate/v2/languages\`
+<ApiEndpoint method="GET" url="https://api-gl.lingvanex.com/language/translate/v2/languages" />
 
 ## Responses
 
-**200** - Successful response
+<div class="space-y-3 my-4">
+  <div class="border-l-4 border-l-green-500 bg-green-500/10 p-4 rounded-r">
+    <div class="flex items-center gap-2 mb-1">
+      <code class="text-sm font-bold text-green-600 dark:text-green-400">200</code>
+      <span class="text-sm font-semibold text-foreground">Successful response</span>
+    </div>
+  </div>
 
-**403** - Authorization error. You must add the API_KEY to the request, which can be created on the user control panel page at https://lingvanex.com/account.`,
+  <div class="border-l-4 border-l-red-500 bg-red-500/10 p-4 rounded-r">
+    <div class="flex items-center gap-2 mb-1">
+      <code class="text-sm font-bold text-red-600 dark:text-red-400">403</code>
+      <span class="text-sm font-semibold text-foreground">Authorization error</span>
+    </div>
+    <p class="text-sm text-muted-foreground mt-2">You should add the API_KEY to the request, which can be created on the user control panel page <a href="https://lingvanex.com/account" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://lingvanex.com/account</a></p>
+  </div>
+</div>
+
+## Examples
+`,
 
   '/language-support': `# Lingvanex API Supported Languages
 
