@@ -38,7 +38,11 @@ Watch this step-by-step guide on how to create your Lingvanex API key:
 
 ## Translation
 
-Translation The Translation API's recognition engine supports a wide variety of languages for the Neural Machine Translation (NMT) model.  These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to (language_COUNTRY) identifiers, except where noted.  Translations from any language to any language in this list are supported. The list is updated as new languages are added. In column Direction text supported ltr means "left to right" and rtl means "right to left" direction.
+The Translation API's recognition engine supports a wide variety of languages for the Neural Machine Translation (NMT) model.
+
+These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to (language\_COUNTRY) identifiers, except where noted.
+
+Translations from any language to any language in this list are supported. The list is updated as new languages are added. In column \`Direction text supported\` \`ltr\` means "left to right" and \`rtl\` means "right to left" direction.
 
 | Language | Language code | Direction text supported |
 | --- | --- | --- |
