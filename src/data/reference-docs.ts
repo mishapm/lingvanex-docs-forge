@@ -47,6 +47,8 @@ export const referenceDocumentation: Record<string, string> = {
     <p class="text-sm text-muted-foreground mt-2">You should add the API_KEY to request which can be created on the user control panel page <a href="https://lingvanex.com/account" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://lingvanex.com/account</a></p>
   </div>
 </div>
+
+### Examples
 `,
   '/translate': `# Translate Text
 
