@@ -355,6 +355,8 @@ Translations from any language to any language in this list are supported. The l
 | Yoruba | yo |
 | Zulu | zu |`,
 
+  '/get-languages': `# Get languages`,
+
   '/language-support': `# Lingvanex API Supported Languages
 
 These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to ISO-639-1 identifiers, except where noted.
