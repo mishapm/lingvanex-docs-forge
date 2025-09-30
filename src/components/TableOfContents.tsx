@@ -82,7 +82,7 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
               activeId === item.id && "bg-primary/10 text-primary font-medium"
             )}
           >
-            {item.text}
+            <span className="truncate block">{item.text}</span>
           </button>
         ))}
       </div>
