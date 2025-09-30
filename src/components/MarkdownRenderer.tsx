@@ -36,7 +36,7 @@ function CodeBlock({ children, className, ...props }: any) {
   }
 
   return (
-    <div className="relative group my-2 rounded-xl border border-border overflow-hidden">
+    <div className="relative group my-1 rounded-xl border border-border overflow-hidden">
       <button
         onClick={handleCopy}
         className={cn(
