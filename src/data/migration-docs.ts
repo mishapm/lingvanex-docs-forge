@@ -165,77 +165,33 @@ JSON representation
 ]
 \`\`\``,
   
-  '/method-languages': `# Method languages
+  '/method-languages': `# Get languages
 
 Returns a list of supported languages for translation.
 
-## HTTP request
+<ApiEndpoint method="GET" url="https://api-gl.lingvanex.com/language/translate/v2/languages" />
 
-\`GET https://api-gl.lingvanex.com/language/translate/v2/languages\`
+## Responses
 
-## Query parameters
+<div class="space-y-3 my-4">
+  <div class="border-l-4 border-l-green-500 bg-green-500/10 p-4 rounded-r">
+    <div class="flex items-center gap-2 mb-1">
+      <code class="text-sm font-bold text-green-600 dark:text-green-400">200</code>
+      <span class="text-sm font-semibold text-foreground">Successful response</span>
+    </div>
+  </div>
 
-| Parameters | Description |
-| --- | --- |
-| **target** | **string**<br>The target language code for the results. If specified, then the language names are returned in the name field of the response, localized in the target language. If you do not supply a target language, then the name field is omitted from the response and only the language codes are returned. |
-| **model** | **string**<br>Not optional, does not affect anything. |
-| **key** | **string**<br>A valid API key to handle requests for this API. |
+  <div class="border-l-4 border-l-red-500 bg-red-500/10 p-4 rounded-r">
+    <div class="flex items-center gap-2 mb-1">
+      <code class="text-sm font-bold text-red-600 dark:text-red-400">403</code>
+      <span class="text-sm font-semibold text-foreground">Authorization error</span>
+    </div>
+    <p class="text-sm text-muted-foreground mt-2">You should add the API_KEY to the request, which can be created on the user control panel page at <a href="https://lingvanex.com/account" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://lingvanex.com/account</a>.</p>
+  </div>
+</div>
 
-## Response body
-
-If successful, the response body contains data with the following structure:
-
-JSON representation
-
-\`\`\`json
-{
-  "data": {
-    object(GetSupportedLanguagesResponseList)
-  }
-}
-\`\`\`
-
-| Fields | Description |
-| --- | --- |
-| **data** | **object(GetSupportedLanguagesResponseList)**<br>A list of supported language responses. This list will contain an entry for each language supported by the Translation API. |
-
-## GetSupportedLanguagesResponseList
-
-A response list contains a list of separate supported language responses.
-
-JSON representation
-
-\`\`\`json
-{
-  "languages": [
-    {
-      object(GetSupportedLanguagesResponseLanguage)
-    }
-  ]
-}
-\`\`\`
-
-| Fields | Description |
-| --- | --- |
-| **languages[]** | **array (GetSupportedLanguagesResponseLanguage)**<br>The set of supported languages. |
-
-## GetSupportedLanguagesResponseLanguage
-
-A single supported language response corresponds to information related to one supported language.
-
-JSON representation
-
-\`\`\`json
-{
-  "language": string,
-  "name": string
-}
-\`\`\`
-
-| Fields | Description |
-| --- | --- |
-| **language** | **string**<br>Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') |
-| **name** | **string**<br>Human readable name of the language localized to the target language. |`,
+## Examples
+`,
   
   '/method-language-support': `# Lingvanex API Supported Languages
 

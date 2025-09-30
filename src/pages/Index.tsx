@@ -17,6 +17,7 @@ import { translateExamples } from '@/data/translate-examples';
 import { translateHtmlExamples } from '@/data/translate-html-examples';
 import { detectLanguagesExamples } from '@/data/detect-languages-examples';
 import { postLanguagesExamples } from '@/data/post-languages-examples';
+import { methodLanguagesExamples } from '@/data/method-languages-examples';
 
 const allDocumentation = {
   ...documentationContent,
@@ -92,6 +93,9 @@ const Index = () => {
               )}
               {currentPath === '/post-languages' && (
                 <LanguageCodeExamples examples={postLanguagesExamples} />
+              )}
+              {currentPath === '/method-languages' && (
+                <LanguageCodeExamples examples={methodLanguagesExamples} />
               )}
               <DocumentationNavigation
                 currentPath={currentPath}
