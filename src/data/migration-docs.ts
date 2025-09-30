@@ -355,7 +355,17 @@ Translations from any language to any language in this list are supported. The l
 | Yoruba | yo |
 | Zulu | zu |`,
 
-  '/get-languages': `# Get languages`,
+  '/get-languages': `# Get languages
+
+## HTTP request
+
+\`GET https://api-gl.lingvanex.com/language/translate/v2/languages\`
+
+## Responses
+
+**200** - Successful response
+
+**403** - Authorization error. You must add the API_KEY to the request, which can be created on the user control panel page at https://lingvanex.com/account.`,
 
   '/language-support': `# Lingvanex API Supported Languages
 
