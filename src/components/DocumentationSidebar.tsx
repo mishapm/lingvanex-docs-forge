@@ -18,7 +18,7 @@ const sidebarStructure: SidebarItem[] = [
     icon: Book,
     children: [
       { id: 'what-is-lingvanex', title: 'What is Lingvanex Translator Service?', href: '/what-is-lingvanex' },
-      { id: 'language-support', title: 'Language support', href: '/language-support' },
+      { id: 'language-support', title: 'Lingvanex API Supported Languages', href: '/language-support' },
       { id: 'pricing', title: 'Pricing', href: '/pricing' },
       { id: 'faq', title: 'Translator Service FAQ', href: '/faq' },
     ],

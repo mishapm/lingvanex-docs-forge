@@ -14,7 +14,7 @@ interface DocumentationNavigationProps {
 
 const navigationOrder: NavigationLink[] = [
   { path: '/what-is-lingvanex', title: 'What is Lingvanex Translator Service?' },
-  { path: '/language-support', title: 'Language support' },
+  { path: '/language-support', title: 'Lingvanex API Supported Languages' },
   { path: '/pricing', title: 'Pricing' },
   { path: '/faq', title: 'Translator Service FAQ' },
   { path: '/getting-languages', title: 'Getting the list of languages' },
