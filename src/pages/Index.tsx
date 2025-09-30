@@ -13,6 +13,7 @@ import documentationContent from '@/data/documentation';
 import referenceDocumentation from '@/data/reference-docs';
 import migrationDocumentation from '@/data/migration-docs';
 import { translateExamples } from '@/data/translate-examples';
+import { gettingLanguagesExamples } from '@/data/getting-languages-examples';
 
 const allDocumentation = {
   ...documentationContent,
@@ -74,9 +75,12 @@ const Index = () => {
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
-              {currentPath === '/translate' && (
-                <LanguageCodeExamples examples={translateExamples} />
-              )}
+          {currentPath === '/translate' && (
+            <LanguageCodeExamples examples={translateExamples} />
+          )}
+          {currentPath === '/getting-languages' && (
+            <LanguageCodeExamples examples={gettingLanguagesExamples} />
+          )}
               <DocumentationNavigation 
                 currentPath={currentPath}
                 onNavigate={handleNavigate}
