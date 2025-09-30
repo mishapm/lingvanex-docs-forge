@@ -54,28 +54,37 @@ const Index = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 md:ml-64">
         {/* Header */}
-        <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border px-4 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <MobileMenu
-              isOpen={isMobileMenuOpen}
-              onToggle={toggleMobileMenu}
-              currentPath={currentPath}
-              onNavigate={handleNavigate}
-            />
-            <h1 className="text-lg font-semibold text-foreground hidden sm:block">
-              Lingvanex Translator API
-            </h1>
+        <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border px-3 sm:px-4 py-3">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+              <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onToggle={toggleMobileMenu}
+                currentPath={currentPath}
+                onNavigate={handleNavigate}
+              />
+              <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">
+                Lingvanex API
+              </h1>
+            </div>
+            
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+              <div className="hidden sm:block flex-1 max-w-sm">
+                <SearchBar onNavigate={handleNavigate} />
+              </div>
+              <ThemeToggle />
+            </div>
           </div>
           
-          <div className="flex items-center gap-3">
-            <SearchBar onNavigate={handleNavigate} className="w-full max-w-sm" />
-            <ThemeToggle />
+          {/* Mobile Search Bar */}
+          <div className="sm:hidden mt-3">
+            <SearchBar onNavigate={handleNavigate} />
           </div>
         </header>
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="flex max-w-6xl mx-auto px-3 py-8 gap-8">
+          <div className="flex max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 gap-8">
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
