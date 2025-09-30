@@ -1,11 +1,7 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Fuse from 'fuse.js';
-import { buildSearchIndex } from '@/utils/searchIndexer';
-import { documentationContent } from '@/data/documentation';
-import { referenceDocumentation } from '@/data/reference-docs';
-import { migrationDocumentation } from '@/data/migration-docs';
 
 interface SearchResult {
   id: string;
@@ -14,6 +10,45 @@ interface SearchResult {
   path: string;
   section?: string;
 }
+
+// Mock search data - in a real app, this would come from your documentation pages
+const searchData: SearchResult[] = [
+  {
+    id: 'overview-1',
+    title: 'What is Lingvanex Translator Service?',
+    content: 'Lingvanex Translator Service is a powerful API for translating text between multiple languages.',
+    path: '/what-is-lingvanex',
+    section: 'Overview'
+  },
+  {
+    id: 'translate-1',
+    title: 'Translate API',
+    content: 'POST /b1/api/v3/translate endpoint for translating text with authorization header',
+    path: '/translate',
+    section: 'Reference'
+  },
+  {
+    id: 'auth-1',
+    title: 'Authorization',
+    content: 'Use Lingvanex-Auth-Key in Authorization header. Keep your API key secret.',
+    path: '/translate',
+    section: 'Authentication'
+  },
+  {
+    id: 'languages-1',
+    title: 'Supported Languages',
+    content: 'en_GB, en_US, de_DE, ru_RU, fr_FR, es_ES and many more language codes',
+    path: '/language-support',
+    section: 'Languages'
+  },
+  {
+    id: 'google-migration-1',
+    title: 'Switching from Google Translate',
+    content: 'Migration guide from Google Translate API to Lingvanex Translator',
+    path: '/method-translate',
+    section: 'Migration'
+  }
+];
 
 interface SearchBarProps {
   onNavigate: (path: string) => void;
@@ -28,20 +63,11 @@ export function SearchBar({ onNavigate, className }: SearchBarProps) {
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Build search index from all documentation sources
-  const searchData = useMemo(() => {
-    return buildSearchIndex({
-      overview: documentationContent,
-      reference: referenceDocumentation,
-      migration: migrationDocumentation
-    });
-  }, []);
-
-  const fuse = useMemo(() => new Fuse(searchData, {
+  const fuse = new Fuse(searchData, {
     keys: ['title', 'content', 'section'],
     threshold: 0.3,
     includeScore: true,
-  }), [searchData]);
+  });
 
   useEffect(() => {
     if (query.trim() === '') {

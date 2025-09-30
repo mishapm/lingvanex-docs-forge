@@ -34,7 +34,7 @@ Watch this step-by-step guide on how to create your Lingvanex API key:
 
 [**Watch on YouTube →**](https://www.youtube.com/watch?v=9DT8UPjxQT4)`,
 
-  '/language-support': `# Lingvanex API Supported Languages
+  '/language-support': `# Language Support
 
 ## Translation
 

@@ -208,20 +208,18 @@ JSON representation
 \`\`\`json
 {
   "languages": [
-    {
-      object(GetSupportedLanguagesResponseLanguage)
-    }
+    array
   ]
 }
 \`\`\`
 
 | Fields | Description |
 | --- | --- |
-| **languages[]** | **array (GetSupportedLanguagesResponseLanguage)**<br>The set of supported languages. |
+| **languages[]** | **array (GetSupportedLanguagesResponseLanguage)**<br>Contains list of supported languages information. |
 
 ## GetSupportedLanguagesResponseLanguage
 
-A single supported language response corresponds to information related to one supported language.
+Contains supported languages information.
 
 JSON representation
 
@@ -234,8 +232,8 @@ JSON representation
 
 | Fields | Description |
 | --- | --- |
-| **language** | **string**<br>Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') |
-| **name** | **string**<br>Human readable name of the language localized to the target language. |`,
+| **language** | **string**<br>Supported language code. Usually refers to an ISO 639-1 language code. |
+| **name** | **string**<br>Human readable name of the language localized in the target language. |`,
   
   '/method-language-support': `# Language Support
 
