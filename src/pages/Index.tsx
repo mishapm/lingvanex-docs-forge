@@ -14,6 +14,7 @@ import referenceDocumentation from '@/data/reference-docs';
 import migrationDocumentation from '@/data/migration-docs';
 import { gettingLanguagesExamples } from '@/data/getting-languages-examples';
 import { translateExamples } from '@/data/translate-examples';
+import { translateHtmlExamples } from '@/data/translate-html-examples';
 
 const allDocumentation = {
   ...documentationContent,
@@ -80,6 +81,9 @@ const Index = () => {
               )}
               {currentPath === '/translate' && (
                 <LanguageCodeExamples examples={translateExamples} />
+              )}
+              {currentPath === '/translate-html' && (
+                <LanguageCodeExamples examples={translateHtmlExamples} />
               )}
               <DocumentationNavigation 
                 currentPath={currentPath}
