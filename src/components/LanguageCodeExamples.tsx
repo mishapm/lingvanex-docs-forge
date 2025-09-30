@@ -17,8 +17,6 @@ export function LanguageCodeExamples({
   const [selectedLanguage, setSelectedLanguage] = useState(examples[0]?.language || 'Shell');
   const currentExample = examples.find(ex => ex.language === selectedLanguage) || examples[0];
   return <div className="mt-6">
-      <h3 className="text-xl font-semibold text-foreground mb-4">Examples</h3>
-      
       <div className="mb-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

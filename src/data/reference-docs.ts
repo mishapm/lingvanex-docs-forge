@@ -48,7 +48,7 @@ export const referenceDocumentation: Record<string, string> = {
   </div>
 </div>
 
-### Examples
+## Examples
 `,
   '/translate': `# Translate Text
 
