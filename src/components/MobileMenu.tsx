@@ -17,18 +17,6 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
     onToggle(); // Close menu after navigation
   };
 
-  // Lock body scroll when menu is open
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-
   return (
     <>
       {/* Mobile menu button */}

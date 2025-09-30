@@ -107,19 +107,19 @@ export function SearchBar({ onNavigate, className }: SearchBarProps) {
   };
 
   return (
-    <div ref={searchRef} className={cn("relative w-full", className)}>
+    <div ref={searchRef} className={cn("relative w-full max-w-md", className)}>
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search docs..."
+          placeholder="Search documentation..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => query && setIsOpen(true)}
           className={cn(
-            "w-full pl-10 pr-10 py-2 text-sm border border-input rounded-lg",
+            "w-full pl-10 pr-10 py-2 border border-input rounded-lg",
             "bg-background text-foreground placeholder:text-muted-foreground",
             "focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent",
             "transition-all duration-200"
@@ -138,7 +138,7 @@ export function SearchBar({ onNavigate, className }: SearchBarProps) {
       {isOpen && results.length > 0 && (
         <div className={cn(
           "absolute top-full left-0 right-0 mt-2 bg-popover border border-border rounded-lg shadow-lg z-50",
-          "max-h-[60vh] sm:max-h-80 overflow-y-auto"
+          "max-h-80 overflow-y-auto"
         )}>
           {results.map((result, index) => (
             <button
