@@ -1,55 +1,5 @@
 export const referenceDocumentation: Record<string, string> = {
-  '/getting-languages': `# Getting the List of Languages
-
-<ApiEndpoint method="GET" url="https://api-b2b.backenster.com/b1/api/v3/getLanguages" />
-
-## Query Params
-
-<div class="space-y-4 my-4">
-  <div class="border border-border rounded-lg p-4 bg-card">
-    <div class="flex items-start gap-3 mb-2">
-      <code class="text-sm font-semibold text-primary">platform</code>
-      <span class="text-xs px-2 py-1 bg-destructive/10 text-destructive rounded">required</span>
-    </div>
-    <div class="ml-0 space-y-2">
-      <p class="text-sm text-muted-foreground">Type: <code class="text-xs">string</code></p>
-      <p class="text-sm text-muted-foreground">Default: <code class="text-xs bg-muted px-1.5 py-0.5 rounded">api</code></p>
-    </div>
-  </div>
-
-  <div class="border border-border rounded-lg p-4 bg-card">
-    <div class="flex items-start gap-3 mb-2">
-      <code class="text-sm font-semibold text-primary">code</code>
-    </div>
-    <div class="ml-0 space-y-2">
-      <p class="text-sm text-muted-foreground">Type: <code class="text-xs">string</code></p>
-      <p class="text-sm text-muted-foreground">Default: <code class="text-xs bg-muted px-1.5 py-0.5 rounded">en_GB</code></p>
-      <p class="text-sm text-foreground mt-2">The language code in the format "language code_code of the country", which is used to display the names of the languages. The language code is represented only in lowercase letters, the country code only in uppercase letters (example en_GB, es_ES, ru_RU etc). If this option is not present, then English is used by default.</p>
-    </div>
-  </div>
-</div>
-
-## Responses
-
-<div class="space-y-3 my-4">
-  <div class="border-l-4 border-l-green-500 bg-green-500/10 p-4 rounded-r">
-    <div class="flex items-center gap-2 mb-1">
-      <code class="text-sm font-bold text-green-600 dark:text-green-400">200</code>
-      <span class="text-sm font-semibold text-foreground">Success</span>
-    </div>
-  </div>
-
-  <div class="border-l-4 border-l-red-500 bg-red-500/10 p-4 rounded-r">
-    <div class="flex items-center gap-2 mb-1">
-      <code class="text-sm font-bold text-red-600 dark:text-red-400">403</code>
-      <span class="text-sm font-semibold text-foreground">Authorization error</span>
-    </div>
-    <p class="text-sm text-muted-foreground mt-2">You should add the API_KEY to request which can be created on the user control panel page <a href="https://lingvanex.com/account" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://lingvanex.com/account</a></p>
-  </div>
-</div>
-
-## Examples
-`,
+  '/getting-languages': `# Getting the List of Languages`,
   '/translate': `# Translate Text
 
 This method translates text and HTML single string or arrays. Also it performs transliteration, language auto detection.
