@@ -383,121 +383,166 @@ Translations from any language to any language in this list are supported. The l
 
   '/language-support': `# Lingvanex API Supported Languages
 
-These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to ISO-639-1 identifiers, except where noted.
+## Translation
 
-Translations from any language to any language in this list are supported. The list is updated as new languages are added.
+The Translation API's recognition engine supports a wide variety of languages for the Neural Machine Translation (NMT) model.
 
-| Language | ISO-639-1 Code |
-| --- | --- |
-| Afrikaans | af |
-| Albanian | sq |
-| Amharic | am |
-| Arabic | ar |
-| Armenian | hy |
-| Azerbaijani | az |
-| Basque | eu |
-| Belarusian | be |
-| Bengali | bn |
-| Bosnian | bs |
-| Bulgarian | bg |
-| Catalan | ca |
-| Cebuano | ceb |
-| Chinese (Simplified) | zh-Hans_CN |
-| Chinese (Traditional) | zh-Hant_TW |
-| Corsican | co |
-| Croatian | hr |
-| Czech | cs |
-| Danish | da |
-| Dutch | nl |
-| English | en |
-| Esperanto | eo |
-| Estonian | et |
-| Finnish | fi |
-| French | fr |
-| Frisian | fy |
-| Galician | gl |
-| Georgian | ka |
-| German | de |
-| Greek | el |
-| Gujarati | gu |
-| Haitian Creole | ht |
-| Hausa | ha |
-| Hawaiian | haw |
-| Hebrew | he |
-| Hindi | hi |
-| Hmong | hmn |
-| Hungarian | hu |
-| Icelandic | is |
-| Igbo | ig |
-| Indonesian | id |
-| Irish | ga |
-| Italian | it |
-| Japanese | ja |
-| Javanese | jv |
-| Kannada | kn |
-| Kazakh | kk |
-| Khmer | km |
-| Kinyarwanda | rw |
-| Korean | ko |
-| Kurdish | ku |
-| Kyrgyz | ky |
-| Lao | lo |
-| Latin | la |
-| Latvian | lv |
-| Lithuanian | lt |
-| Luxembourgish | lb |
-| Macedonian | mk |
-| Malagasy | mg |
-| Malay | ms |
-| Malayalam | ml |
-| Maltese | mt |
-| Maori | mi |
-| Marathi | mr |
-| Mongolian | mn |
-| Myanmar (Burmese) | my |
-| Nepali | ne |
-| Norwegian | no |
-| Nyanja (Chichewa) | ny |
-| Odia (Oriya) | or |
-| Pashto | ps |
-| Persian | fa |
-| Polish | pl |
-| Portuguese (Portugal, Brazil) | pt |
-| Punjabi | pa |
-| Romanian | ro |
-| Russian | ru |
-| Samoan | sm |
-| Scots Gaelic | gd |
-| Serbian Cyrilic | sr-Cyrl |
-| Sesotho | st |
-| Shona | sn |
-| Sindhi | sd |
-| Sinhala (Sinhalese) | si |
-| Slovak | sk |
-| Slovenian | sl |
-| Somali | so |
-| Spanish | es |
-| Sundanese | su |
-| Swahili | sw |
-| Swedish | sv |
-| Tagalog (Filipino) | tl |
-| Tajik | tg |
-| Tamil | ta |
-| Tatar | tt |
-| Telugu | te |
-| Thai | th |
-| Turkish | tr |
-| Turkmen | tk |
-| Ukrainian | uk |
-| Urdu | ur |
-| Uyghur | ug |
-| Uzbek | uz |
-| Vietnamese | vi |
-| Welsh | cy |
-| Xhosa | xh |
-| Yiddish | yi |
-| Yoruba | yo |
-| Zulu | zu |`
+These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to (language\_COUNTRY) identifiers, except where noted.
+
+Translations from any language to any language in this list are supported. The list is updated as new languages are added. In column \`Direction text supported\` \`ltr\` means "left to right" and \`rtl\` means "right to left" direction.
+
+| Language | Language code | Direction text supported |
+| --- | --- | --- |
+| Afrikaans | af\_ZA | ltr |
+| Albanian | sq\_AL | ltr |
+| Amharic | am\_ET | ltr |
+| Arabic | ar\_SA | rtl |
+| Armenian | hy\_AM | ltr |
+| Azerbaijani | az\_AZ | ltr |
+| Basque | eu\_ES | ltr |
+| Belarusian | be\_BY | ltr |
+| Bengali | bn\_BD | ltr |
+| Bosnian | bs\_BA | ltr |
+| Bulgarian | bg\_BG | ltr |
+| Catalan | ca\_ES | ltr |
+| Cebuano | ceb\_PH | ltr |
+| Chinese (Simplified) | zh-Hans\_CN | ltr |
+| Chinese (Traditional) | zh-Hant\_TW | ltr |
+| Corsican | co\_FR | ltr |
+| Croatian | hr\_HR | ltr |
+| Czech | cs\_CZ | ltr |
+| Danish | da\_DK | ltr |
+| Dutch | nl\_NL | ltr |
+| English | en\_US | ltr |
+| Esperanto | eo\_WORLD | ltr |
+| Estonian | et\_EE | ltr |
+| Finnish | fi\_FI | ltr |
+| French | fr\_FR | ltr |
+| Frisian | fy\_NL | ltr |
+| Galician | gl\_ES | ltr |
+| Georgian | ka\_GE | ltr |
+| German | de\_DE | ltr |
+| Greek | el\_GR | ltr |
+| Gujarati | gu\_IN | ltr |
+| Haitian Creole | ht\_HT | ltr |
+| Hausa | ha\_NE | ltr |
+| Hawaiian | haw\_US | ltr |
+| Hebrew | he\_IL | rtl |
+| Hindi | hi\_IN | ltr |
+| Hmong | hmn\_CN | ltr |
+| Hungarian | hu\_HU | ltr |
+| Icelandic | is\_IS | ltr |
+| Igbo | ig\_NG | ltr |
+| Indonesian | id\_ID | ltr |
+| Irish | ga\_IE | ltr |
+| Italian | it\_IT | ltr |
+| Japanese | ja\_JP | ltr |
+| Javanese | jv\_ID | ltr |
+| Kannada | kn\_IN | ltr |
+| Kazakh | kk\_KZ | ltr |
+| Khmer | km\_KH | ltr |
+| Kinyarwanda | rw\_RW | ltr |
+| Korean | ko\_KR | ltr |
+| Kurdish (Kurmanji) | ku\_IR | ltr |
+| Kyrgyz | ky\_KG | ltr |
+| Lao | lo\_LA | ltr |
+| Latin | la\_VAT | ltr |
+| Latvian | lv\_LV | ltr |
+| Lithuanian | lt\_LT | ltr |
+| Luxembourgish | lb\_LU | ltr |
+| Macedonian | mk\_MK | ltr |
+| Malagasy | mg\_MG | ltr |
+| Malay | ms\_MY | ltr |
+| Malayalam | ml\_IN | ltr |
+| Maltese | mt\_MT | ltr |
+| Maori | mi\_NZ | ltr |
+| Marathi | mr\_IN | ltr |
+| Mongolian | mn\_MN | ltr |
+| Myanmar (Burmese) | my\_MM | ltr |
+| Nepali | ne\_NP | ltr |
+| Nyanja (Chichewa) | ny\_MW | ltr |
+| Norwegian | no\_NO | ltr |
+| Odia (Oriya) | or\_OR | ltr |
+| Pashto | ps\_AF | rtl |
+| Persian (Iranian) | fa\_IR | rtl |
+| Polish | pl\_PL | ltr |
+| Portuguese (Brazil) | pt\_BR | ltr |
+| Portuguese (Portugal) | pt\_PT | ltr |
+| Punjabi (Panjabi) | pa\_PK | ltr |
+| Romanian | ro\_RO | ltr |
+| Russian | ru\_RU | ltr |
+| Samoan | sm\_WS | ltr |
+| Scots Gaelic | gd\_GB | ltr |
+| Serbian (Cyrillic) | sr-Cyrl\_RS | ltr |
+| Sesotho | st\_LS | ltr |
+| Shona | sn\_ZW | ltr |
+| Sindhi | sd\_PK | rtl |
+| Sinhala | si\_LK | ltr |
+| Slovak | sk\_SK | ltr |
+| Slovenian | sl\_SI | ltr |
+| Somali | so\_SO | ltr |
+| Spanish | es\_ES | ltr |
+| Sundanese | su\_ID | ltr |
+| Swahili | sw\_TZ | ltr |
+| Swedish | sv\_SE | ltr |
+| Tagalog (Filipino) | tl\_PH | ltr |
+| Tajik | tg\_TJ | ltr |
+| Tamil | ta\_IN | ltr |
+| Tatar | tt\_TT | ltr |
+| Telugu | te\_IN | ltr |
+| Thai | th\_TH | ltr |
+| Turkish | tr\_TR | ltr |
+| Turkmen | tk\_TM | ltr |
+| Ukrainian | uk\_UA | ltr |
+| Urdu | ur\_PK | rtl |
+| Uyghur | ug\_CN | rtl |
+| Uzbek | uz\_UZ | ltr |
+| Vietnamese | vi\_VN | ltr |
+| Welsh | cy\_GB | ltr |
+| Xhosa | xh\_ZA | ltr |
+| Yiddish | yi\_IL | rtl |
+| Yoruba | yo\_NG | ltr |
+| Zulu | zu\_ZA | ltr |
+
+## Transliteration
+
+The Transliterate operation in the Text Translation feature supports the following languages. In the "To/From", "<-->" indicates that the language can be transliterated from or to either of the scripts listed. The "-->" indicates that the language can only be transliterated from one script to the other.
+
+| Language | Language code | Script | To/From | Script |
+| --- | --- | --- | --- | --- |
+| Arabic | ar\_SA | Arabic (Arab) | <--> | Latin (Latn) |
+| Bengali | bn\_BD | Bengali (Beng) | <--> | Latin (Latn) |
+| Belarusian | be\_BY | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Bulgarian | bg\_BG | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Chinese (Simplified) | zh-Hans\_CN | Chinese (Simplified Hans) | <--> | Latin (Latn) |
+| Chinese (Traditional) | zh-Hant\_TW | Chinese (Simplified Hans) | <--> | Latin (Latn) |
+| Greek | el\_GR | Greek (Grek) | <--> | Latin (Latn) |
+| Gujarati | gu\_IN | Gujarati (Gujr) | <--> | Latin (Latn) |
+| Hebrew | he\_IL | Hebrew (Hebr) | <--> | Latin (Latn) |
+| Hindi | hi\_IN | Devanagari (Deva) | <--> | Latin (Latn) |
+| Japanese | ja\_JP | Japanese (Jpan) | <--> | Latin (Latn) |
+| Kannada | kn\_IN | Kannada (Knda) | <--> | Latin (Latn) |
+| Kazakh | kk\_KZ | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Korean | ko\_KR | Korean (Kore) | <--> | Latin (Latn) |
+| Kyrgyz | ky\_KG | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Macedonian | mk\_MK | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Malayalam | ml\_IN | Malayalam (Mlym) | <--> | Latin (Latn) |
+| Marathi | mr\_IN | Devanagari (Deva) | <--> | Latin (Latn) |
+| Mongolian | mn\_MN | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Odia (Oriya) | or\_OR | Oriya (Orya) | <--> | Latin (Latn) |
+| Persian (Iranian) | fa\_IR | Arabic (Arab) | <--> | Latin (Latn) |
+| Punjabi (Panjabi) | pa\_PK | Gurmukhi (Guru) | <--> | Latin (Latn) |
+| Russian | ru\_RU | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Serbian (Cyrillic) | sr-Cyrl\_RS | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Sindhi | sd\_PK | Arabic (Arab) | <--> | Latin (Latn) |
+| Sinhala | si\_LK | Sinhala (Sinh) | <--> | Latin (Latn) |
+| Tajik | tg\_TJ | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Tamil | ta\_IN | Tamil (Taml) | <--> | Latin (Latn) |
+| Tatar | tt\_TT | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Telugu | te\_IN | Telugu (Telu) | <--> | Latin (Latn) |
+| Thai | th\_TH | Thai (Thai) | <--> | Latin (Latn) |
+| Ukrainian | uk\_UA | Cyrillic (Cyrl) | <--> | Latin (Latn) |
+| Urdu | ur\_PK | Arabic (Arab) | <--> | Latin (Latn) |`
 };
 
 export default migrationDocumentation;
