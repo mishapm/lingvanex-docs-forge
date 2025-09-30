@@ -123,9 +123,9 @@ export function DocumentationSidebar({ currentPath, onNavigate, className }: Doc
             <span>{item.title}</span>
             {hasChildren && (
               isExpanded ? (
-                <ChevronDown className="h-3 w-3 text-sidebar-foreground/60 flex-shrink-0" />
+                <ChevronDown className="h-4 w-4 text-sidebar-foreground/60 flex-shrink-0" />
               ) : (
-                <ChevronRight className="h-3 w-3 text-sidebar-foreground/60 flex-shrink-0" />
+                <ChevronRight className="h-4 w-4 text-sidebar-foreground/60 flex-shrink-0" />
               )
             )}
           </div>
