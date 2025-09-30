@@ -237,7 +237,7 @@ JSON representation
 | **language** | **string**<br>Supported language code, generally consisting of its ISO 639-1 identifier. (E.g. 'en', 'ja'). In certain cases, BCP-47 codes including language + region identifiers are returned (e.g. 'zh-TW' and 'zh-CH') |
 | **name** | **string**<br>Human readable name of the language localized to the target language. |`,
   
-  '/method-language-support': `# Language Support
+  '/method-language-support': `# Lingvanex API Supported Languages
 
 These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to ISO-639-1 identifiers, except where noted.
 
@@ -355,7 +355,7 @@ Translations from any language to any language in this list are supported. The l
 | Yoruba | yo |
 | Zulu | zu |`,
 
-  '/language-support': `# Language Support
+  '/language-support': `# Lingvanex API Supported Languages
 
 These languages are specified within a recognition request using language code parameters as noted on this page. Most language code parameters conform to ISO-639-1 identifiers, except where noted.
 
