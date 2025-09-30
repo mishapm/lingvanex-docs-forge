@@ -15,6 +15,7 @@ import migrationDocumentation from '@/data/migration-docs';
 import { gettingLanguagesExamples } from '@/data/getting-languages-examples';
 import { translateExamples } from '@/data/translate-examples';
 import { translateHtmlExamples } from '@/data/translate-html-examples';
+import { detectLanguagesExamples } from '@/data/detect-languages-examples';
 
 const allDocumentation = {
   ...documentationContent,
@@ -85,7 +86,10 @@ const Index = () => {
               {currentPath === '/translate-html' && (
                 <LanguageCodeExamples examples={translateHtmlExamples} />
               )}
-              <DocumentationNavigation 
+              {currentPath === '/detect-languages' && (
+                <LanguageCodeExamples examples={detectLanguagesExamples} />
+              )}
+              <DocumentationNavigation
                 currentPath={currentPath}
                 onNavigate={handleNavigate}
               />
