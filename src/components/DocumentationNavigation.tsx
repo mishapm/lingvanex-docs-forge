@@ -19,13 +19,15 @@ const navigationOrder: NavigationLink[] = [
   { path: '/faq', title: 'Translator Service FAQ' },
   { path: '/getting-languages', title: 'Getting the list of languages' },
   { path: '/translate', title: 'Translate' },
+  { path: '/google-migration-guide', title: 'Switching from Google Translate to Lingvanex Translator' },
   { path: '/method-translate', title: 'Method: translate' },
   { path: '/method-detect', title: 'Method: detect' },
   { path: '/method-languages', title: 'Method: languages' },
+  { path: '/method-language-support', title: 'Language support' },
   { path: '/get-languages', title: 'Get languages' },
   { path: '/post-languages', title: 'Post languages' },
   { path: '/detect-languages', title: 'Detect languages' },
-  { path: '/translate-html', title: 'Translate html' },
+  { path: '/translate-html', title: 'Translate HTML' },
 ];
 
 export function DocumentationNavigation({ currentPath, onNavigate }: DocumentationNavigationProps) {
