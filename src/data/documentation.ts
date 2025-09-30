@@ -28,9 +28,9 @@ Your API key will be available in the Cloud API section of your account, ready f
 
 Watch this step-by-step guide on how to create your Lingvanex API key:
 
-<div style="margin: 20px 0;">
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/9DT8UPjxQT4?si=IeYZXUiFIiHOkI53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="my-6 w-full max-w-[95%] sm:max-w-[85%] md:max-w-[75%] lg:max-w-[65%] mx-auto">
+  <div class="relative w-full" style="padding-bottom: 56.25%;">
+    <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/9DT8UPjxQT4?si=IeYZXUiFIiHOkI53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 </div>
 
