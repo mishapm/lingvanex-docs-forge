@@ -41,31 +41,31 @@ export function DocumentationNavigation({ currentPath, onNavigate }: Documentati
   if (!previousPage && !nextPage) return null;
 
   return (
-    <div className="flex justify-between items-center pt-8 mt-8 border-t border-border">
-      <div className="flex-1">
+    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 pt-8 mt-8 border-t border-border">
+      <div className="flex-1 w-full sm:w-auto">
         {previousPage && (
           <Button
             variant="ghost"
             onClick={() => onNavigate(previousPage.path)}
-            className="h-auto p-4 justify-start text-left hover:bg-muted/50"
+            className="h-auto p-4 justify-start text-left hover:bg-muted/50 w-full sm:w-auto"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 min-w-0">
               <ChevronLeft className="h-4 w-4 flex-shrink-0" />
-              <div className="font-medium">{previousPage.title}</div>
+              <div className="font-medium truncate">{previousPage.title}</div>
             </div>
           </Button>
         )}
       </div>
       
-      <div className="flex-1 flex justify-end">
+      <div className="flex-1 w-full sm:w-auto flex sm:justify-end">
         {nextPage && (
           <Button
             variant="ghost"
             onClick={() => onNavigate(nextPage.path)}
-            className="h-auto p-4 justify-end text-right hover:bg-muted/50"
+            className="h-auto p-4 justify-start sm:justify-end text-left sm:text-right hover:bg-muted/50 w-full sm:w-auto"
           >
-            <div className="flex items-center gap-3">
-              <div className="font-medium">{nextPage.title}</div>
+            <div className="flex items-center gap-3 min-w-0">
+              <div className="font-medium truncate flex-1">{nextPage.title}</div>
               <ChevronRight className="h-4 w-4 flex-shrink-0" />
             </div>
           </Button>

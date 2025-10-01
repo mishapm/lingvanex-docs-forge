@@ -18,9 +18,10 @@ interface SearchResult {
 interface SearchBarProps {
   onNavigate: (path: string) => void;
   className?: string;
+  autoFocus?: boolean;
 }
 
-export function SearchBar({ onNavigate, className }: SearchBarProps) {
+export function SearchBar({ onNavigate, className, autoFocus }: SearchBarProps) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -118,6 +119,7 @@ export function SearchBar({ onNavigate, className }: SearchBarProps) {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => query && setIsOpen(true)}
+          autoFocus={autoFocus}
           className={cn(
             "w-full pl-10 sm:pl-11 pr-10 sm:pr-11 py-2.5 sm:py-2 border border-input rounded-lg",
             "bg-background text-foreground text-sm sm:text-base placeholder:text-muted-foreground",

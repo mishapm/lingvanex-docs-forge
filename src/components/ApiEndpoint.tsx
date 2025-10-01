@@ -28,30 +28,32 @@ export const ApiEndpoint = ({ method, url }: ApiEndpointProps) => {
   };
 
   return (
-    <div className="flex items-center gap-3 p-4 mb-6 bg-muted/50 rounded-lg border">
+    <div className="flex flex-col sm:flex-row sm:items-center gap-3 p-4 mb-6 bg-muted/50 rounded-lg border">
       <span
         className={cn(
-          "px-3 py-1 text-sm font-semibold rounded-md border uppercase",
+          "px-3 py-1 text-sm font-semibold rounded-md border uppercase w-fit flex-shrink-0",
           getMethodStyles(method)
         )}
       >
         {method}
       </span>
-      <span className="font-mono text-sm text-foreground/80 flex-1">
+      <span className="font-mono text-sm text-foreground/80 flex-1 break-all min-w-0">
         {url}
       </span>
-      <button
-        onClick={copyToClipboard}
-        className="p-2 hover:bg-background/80 rounded-md transition-colors"
-        title="Copy URL"
-      >
-        <Copy className="h-4 w-4" />
-      </button>
-      {copied && (
-        <span className="text-sm text-green-600 dark:text-green-400">
-          Copied!
-        </span>
-      )}
+      <div className="flex items-center gap-2 flex-shrink-0">
+        <button
+          onClick={copyToClipboard}
+          className="p-2 hover:bg-background/80 rounded-md transition-colors"
+          title="Copy URL"
+        >
+          <Copy className="h-4 w-4" />
+        </button>
+        {copied && (
+          <span className="text-sm text-green-600 dark:text-green-400 whitespace-nowrap">
+            Copied!
+          </span>
+        )}
+      </div>
     </div>
   );
 };

@@ -37,14 +37,21 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
             onClick={onToggle}
           />
           
-          {/* Drawer Panel */}
-          <div className={cn(
-            "fixed bottom-0 left-0 right-0 bg-card border-t border-border rounded-t-2xl shadow-lg",
-            "h-[85vh] flex flex-col",
-            "animate-in slide-in-from-bottom-full duration-300"
-          )}>
+          {/* Drawer Panel - slides up from bottom */}
+          <div 
+            className={cn(
+              "fixed left-0 right-0 bg-card border-t border-border rounded-t-2xl shadow-2xl",
+              "flex flex-col",
+              "transition-transform duration-300 ease-out",
+              isOpen ? "bottom-0 translate-y-0" : "bottom-0 translate-y-full"
+            )}
+            style={{ 
+              height: '85vh',
+              maxHeight: '85vh'
+            }}
+          >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-border">
+            <div className="flex items-center justify-between p-4 border-b border-border bg-card flex-shrink-0">
               <div className="flex items-center gap-2">
                 <img src={logo2} alt="Logo" className="h-6 w-6" />
                 <h2 className="text-lg font-semibold text-foreground">
@@ -61,7 +68,7 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
             </div>
             
             {/* Sidebar content with proper touch scrolling */}
-            <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4 bg-card">
               <DocumentationSidebar 
                 currentPath={currentPath}
                 onNavigate={handleNavigate}

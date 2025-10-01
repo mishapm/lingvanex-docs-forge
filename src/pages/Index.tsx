@@ -4,6 +4,7 @@ import { DocumentationSidebar } from '@/components/DocumentationSidebar';
 import { SearchBar } from '@/components/SearchBar';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { MobileMenu } from '@/components/MobileMenu';
+import { MobileSearchModal } from '@/components/MobileSearchModal';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import { LanguageCodeExamples } from '@/components/LanguageCodeExamples';
 import { DocumentationNavigation } from '@/components/DocumentationNavigation';
@@ -85,13 +86,11 @@ const Index = () => {
               <div className="hidden sm:block">
                 <SearchBar onNavigate={handleNavigate} className="w-64" />
               </div>
+              <div className="sm:hidden">
+                <MobileSearchModal onNavigate={handleNavigate} />
+              </div>
               <ThemeToggle />
             </div>
-          </div>
-          
-          {/* Mobile search row */}
-          <div className="sm:hidden px-4 pb-3">
-            <SearchBar onNavigate={handleNavigate} className="w-full" />
           </div>
         </header>
 
