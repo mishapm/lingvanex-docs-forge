@@ -2,12 +2,6 @@ import React from 'react';
 import { X, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { DocumentationSidebar } from './DocumentationSidebar';
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-} from '@/components/ui/drawer';
 import logo2 from '@/assets/logo2.png';
 
 interface MobileMenuProps {
@@ -34,37 +28,49 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
         <Menu className="h-6 w-6" />
       </button>
 
-      {/* Drawer for mobile navigation */}
-      <Drawer open={isOpen} onOpenChange={onToggle}>
-        <DrawerContent className="h-[85vh] md:hidden">
-          <DrawerHeader className="border-b border-sidebar-border pb-4">
-            <div className="flex items-center justify-between">
+      {/* Mobile menu overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-background/80 backdrop-blur-sm animate-in fade-in-0" 
+            onClick={onToggle}
+          />
+          
+          {/* Drawer Panel */}
+          <div className={cn(
+            "fixed bottom-0 left-0 right-0 bg-card border-t border-border rounded-t-2xl shadow-lg",
+            "h-[85vh] flex flex-col",
+            "animate-in slide-in-from-bottom-full duration-300"
+          )}>
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <img src={logo2} alt="Logo" className="h-6 w-6" />
-                <DrawerTitle className="text-lg font-semibold">
+                <h2 className="text-lg font-semibold text-foreground">
                   API Documentation
-                </DrawerTitle>
+                </h2>
               </div>
               <button
                 onClick={onToggle}
-                className="p-2 rounded-md hover:bg-sidebar-accent transition-colors active:scale-95"
+                className="p-2 rounded-md hover:bg-accent transition-colors active:scale-95"
                 aria-label="Close menu"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-          </DrawerHeader>
-          
-          {/* Sidebar content with proper touch scrolling */}
-          <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
-            <DocumentationSidebar 
-              currentPath={currentPath}
-              onNavigate={handleNavigate}
-              className="h-full"
-            />
+            
+            {/* Sidebar content with proper touch scrolling */}
+            <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
+              <DocumentationSidebar 
+                currentPath={currentPath}
+                onNavigate={handleNavigate}
+                className="h-full"
+              />
+            </div>
           </div>
-        </DrawerContent>
-      </Drawer>
+        </div>
+      )}
     </>
   );
 }
