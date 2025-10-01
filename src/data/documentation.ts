@@ -205,7 +205,7 @@ The price of cloud API is $5 per 1 million characters translation.
 
 Custom pricing for more than 500 million characters per month.
 
-When you [create the API key](https://docs.lingvanex.com/reference/overview#try-the-lingvanex-translator-service-for-free) on the account page you receive 1$.
+When you [create the API key](/what-is-lingvanex) on the account page you receive 1$.
 
 So you can translate 200 000 characters for free.`,
 
@@ -217,7 +217,7 @@ The price per million characters is 5$.
 
 ## Is there a free plan?
 
-When you [create the API key](https://docs.lingvanex.com/reference/overview#try-the-lingvanex-translator-service-for-free) on the account page you receive 1$. So you can translate 200 000 characters for free.
+When you [create the API key](/what-is-lingvanex) on the account page you receive 1$. So you can translate 200 000 characters for free.
 
 ## Where can I get the authorization key?
 
