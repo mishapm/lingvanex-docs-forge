@@ -194,4 +194,75 @@
   .focus-visible:focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    /* Improved touch targets */
+    button, a, input, select, textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Better mobile typography */
+    h1 {
+      @apply text-2xl;
+    }
+
+    h2 {
+      @apply text-xl;
+    }
+
+    h3 {
+      @apply text-lg;
+    }
+
+    /* Prevent text size adjustment on orientation change */
+    html {
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Smooth scrolling on mobile */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Prevent pull-to-refresh on mobile browsers */
+    body {
+      overscroll-behavior-y: contain;
+    }
+  }
+
+  /* Touch-specific interactions */
+  @media (hover: none) {
+    /* Remove hover effects on touch devices */
+    .hover\:bg-accent:hover {
+      background-color: inherit;
+    }
+
+    /* Use active states instead */
+    .hover\:bg-accent:active {
+      background-color: hsl(var(--accent));
+    }
+  }
+
+  /* Mobile drawer animations */
+  @keyframes drawer-slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  /* Safe area insets for mobile devices */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .mobile-safe-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .mobile-safe-top {
+      padding-top: env(safe-area-inset-top);
+    }
+  }
 }

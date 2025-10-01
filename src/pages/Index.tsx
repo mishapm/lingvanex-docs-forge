@@ -41,6 +41,18 @@ const Index = () => {
 
   const currentContent = allDocumentation[currentPath] || allDocumentation['/what-is-lingvanex'];
 
+  // Lock body scroll when mobile menu is open
+  React.useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <div className="min-h-screen bg-background flex w-full">
       {/* Desktop Sidebar */}
@@ -53,29 +65,39 @@ const Index = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 md:ml-64">
-        {/* Header */}
-        <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border px-4 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <MobileMenu
-              isOpen={isMobileMenuOpen}
-              onToggle={toggleMobileMenu}
-              currentPath={currentPath}
-              onNavigate={handleNavigate}
-            />
-            <h1 className="text-lg font-semibold text-foreground hidden sm:block">
-              Lingvanex Translator API
-            </h1>
+        {/* Header - Mobile Optimized */}
+        <header className="sticky top-0 z-30 bg-background/95 backdrop-blur-sm border-b border-border">
+          {/* Top row - Logo and actions */}
+          <div className="flex items-center justify-between px-4 py-3 gap-3">
+            <div className="flex items-center gap-3 min-w-0">
+              <MobileMenu
+                isOpen={isMobileMenuOpen}
+                onToggle={toggleMobileMenu}
+                currentPath={currentPath}
+                onNavigate={handleNavigate}
+              />
+              <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">
+                Lingvanex Translator API
+              </h1>
+            </div>
+            
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="hidden sm:block">
+                <SearchBar onNavigate={handleNavigate} className="w-64" />
+              </div>
+              <ThemeToggle />
+            </div>
           </div>
           
-          <div className="flex items-center gap-3">
-            <SearchBar onNavigate={handleNavigate} className="w-full max-w-sm" />
-            <ThemeToggle />
+          {/* Mobile search row */}
+          <div className="sm:hidden px-4 pb-3">
+            <SearchBar onNavigate={handleNavigate} className="w-full" />
           </div>
         </header>
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="flex max-w-6xl mx-auto px-3 py-8 gap-8">
+          <div className="flex max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 gap-8">
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
@@ -105,7 +127,7 @@ const Index = () => {
             
             {/* Table of Contents */}
             <aside className="hidden lg:block w-64 flex-shrink-0">
-              <div className="fixed top-20 right-8 w-56 max-h-[calc(100vh-6rem)] bg-background/95 backdrop-blur-sm border border-border rounded-lg p-4 z-10">
+              <div className="fixed top-24 right-8 w-56 max-h-[calc(100vh-7rem)] bg-background/95 backdrop-blur-sm border border-border rounded-lg p-4 z-10">
                 <TableOfContents content={currentContent} />
               </div>
             </aside>
