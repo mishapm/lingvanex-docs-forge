@@ -138,10 +138,15 @@ export function DocumentationSidebar({
   };
   return <nav className={cn("h-full overflow-y-auto py-4", className)}>
       <div className="px-4 mb-6">
-        <div className="flex items-center gap-2">
+        <a 
+          href="https://lingvanex.com/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 cursor-pointer"
+        >
           <img src={logo2} alt="Logo" className="h-6 w-6" />
           <h2 className="text-lg font-semibold text-sidebar-foreground">Lingvanex</h2>
-        </div>
+        </a>
       </div>
       <div className="px-4 space-y-2">
         {sidebarStructure.map(item => renderSidebarItem(item))}
