@@ -24,6 +24,25 @@ const allDocumentation = {
   ...referenceDocumentation,
   ...migrationDocumentation
 };
+
+const pageTitles: Record<string, string> = {
+  '/what-is-lingvanex': 'What is Lingvanex Translator Service?',
+  '/language-support': 'Lingvanex API Supported Languages',
+  '/pricing': 'Pricing',
+  '/faq': 'Translator Service FAQ',
+  '/getting-languages': 'Getting the list of languages',
+  '/translate': 'Translate',
+  '/google-migration-guide': 'Switching from Google Translate to Lingvanex Translator',
+  '/method-translate': 'Method: translate',
+  '/method-detect': 'Method: detect',
+  '/method-languages': 'Method: languages',
+  '/method-language-support': 'Language support',
+  '/get-languages': 'Get languages',
+  '/post-languages': 'Post languages',
+  '/detect-languages': 'Detect languages',
+  '/translate-html': 'Translate HTML'
+};
+
 const Index = () => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname === '/' ? '/what-is-lingvanex' : location.pathname);
@@ -48,6 +67,12 @@ const Index = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
+
+  // Update page title based on current path
+  React.useEffect(() => {
+    const pageTitle = pageTitles[currentPath] || 'Lingvanex Translator API Documentation';
+    document.title = `${pageTitle} | Lingvanex Translator API Documentation`;
+  }, [currentPath]);
   return <div className="min-h-screen bg-background flex w-full">
       {/* Desktop Sidebar */}
       <aside className="hidden md:block fixed left-0 top-0 w-64 h-screen bg-sidebar border-r border-sidebar-border z-20">
