@@ -19,27 +19,22 @@ import { translateHtmlExamples } from '@/data/translate-html-examples';
 import { detectLanguagesExamples } from '@/data/detect-languages-examples';
 import { postLanguagesExamples } from '@/data/post-languages-examples';
 import { getLanguagesExamples } from '@/data/get-languages-examples';
-
 const allDocumentation = {
   ...documentationContent,
   ...referenceDocumentation,
   ...migrationDocumentation
 };
-
 const Index = () => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = useState(location.pathname === '/' ? '/what-is-lingvanex' : location.pathname);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const handleNavigate = (path: string) => {
     setCurrentPath(path);
     window.history.pushState({}, '', path);
   };
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
   const currentContent = allDocumentation[currentPath] || allDocumentation['/what-is-lingvanex'];
 
   // Lock body scroll when mobile menu is open
@@ -53,15 +48,10 @@ const Index = () => {
       document.body.style.overflow = 'unset';
     };
   }, [isMobileMenuOpen]);
-
-  return (
-    <div className="min-h-screen bg-background flex w-full">
+  return <div className="min-h-screen bg-background flex w-full">
       {/* Desktop Sidebar */}
       <aside className="hidden md:block fixed left-0 top-0 w-64 h-screen bg-sidebar border-r border-sidebar-border z-20">
-        <DocumentationSidebar 
-          currentPath={currentPath}
-          onNavigate={handleNavigate}
-        />
+        <DocumentationSidebar currentPath={currentPath} onNavigate={handleNavigate} />
       </aside>
 
       {/* Main Content */}
@@ -71,15 +61,8 @@ const Index = () => {
           {/* Top row - Logo and actions */}
           <div className="flex items-center justify-between px-4 py-3 gap-3">
             <div className="flex items-center gap-3 min-w-0">
-              <MobileMenu
-                isOpen={isMobileMenuOpen}
-                onToggle={toggleMobileMenu}
-                currentPath={currentPath}
-                onNavigate={handleNavigate}
-              />
-              <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">
-                Lingvanex Translator API
-              </h1>
+              <MobileMenu isOpen={isMobileMenuOpen} onToggle={toggleMobileMenu} currentPath={currentPath} onNavigate={handleNavigate} />
+              <h1 className="text-base sm:text-lg font-semibold text-foreground truncate">Lingvanex Translator API Documentation</h1>
             </div>
             
             <div className="flex items-center gap-2 flex-shrink-0">
@@ -100,28 +83,13 @@ const Index = () => {
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
-              {currentPath === '/getting-languages' && (
-                <LanguageCodeExamples examples={gettingLanguagesExamples} />
-              )}
-              {currentPath === '/translate' && (
-                <LanguageCodeExamples examples={translateExamples} />
-              )}
-              {currentPath === '/translate-html' && (
-                <LanguageCodeExamples examples={translateHtmlExamples} />
-              )}
-              {currentPath === '/detect-languages' && (
-                <LanguageCodeExamples examples={detectLanguagesExamples} />
-              )}
-              {currentPath === '/post-languages' && (
-                <LanguageCodeExamples examples={postLanguagesExamples} />
-              )}
-              {currentPath === '/get-languages' && (
-                <LanguageCodeExamples examples={getLanguagesExamples} />
-              )}
-              <DocumentationNavigation
-                currentPath={currentPath}
-                onNavigate={handleNavigate}
-              />
+              {currentPath === '/getting-languages' && <LanguageCodeExamples examples={gettingLanguagesExamples} />}
+              {currentPath === '/translate' && <LanguageCodeExamples examples={translateExamples} />}
+              {currentPath === '/translate-html' && <LanguageCodeExamples examples={translateHtmlExamples} />}
+              {currentPath === '/detect-languages' && <LanguageCodeExamples examples={detectLanguagesExamples} />}
+              {currentPath === '/post-languages' && <LanguageCodeExamples examples={postLanguagesExamples} />}
+              {currentPath === '/get-languages' && <LanguageCodeExamples examples={getLanguagesExamples} />}
+              <DocumentationNavigation currentPath={currentPath} onNavigate={handleNavigate} />
             </div>
             
             {/* Table of Contents */}
@@ -133,8 +101,6 @@ const Index = () => {
           </div>
         </main>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
