@@ -164,17 +164,15 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
           </div>
         ),
         iframe: ({ src, width, height, title, allow, ...props }) => (
-          <div className="flex justify-center my-6">
+          <div className="flex justify-center my-6 w-full">
             <iframe
               src={src}
-              width={width ? Math.round(parseInt(width) * 1.5) : width}
-              height={height ? Math.round(parseInt(height) * 1.5) : height}
               title={title}
               frameBorder="0"
               allow={allow}
               referrerPolicy={(props as any).referrerpolicy}
               allowFullScreen={(props as any).allowfullscreen}
-              className="rounded-lg border border-border"
+              className="rounded-lg border border-border w-full max-w-full md:max-w-2xl aspect-video"
             />
           </div>
         ),

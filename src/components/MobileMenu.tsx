@@ -40,10 +40,10 @@ export function MobileMenu({ isOpen, onToggle, currentPath, onNavigate }: Mobile
           {/* Drawer Panel - slides up from bottom */}
           <div 
             className={cn(
-              "fixed left-0 right-0 bg-card border-t border-border rounded-t-2xl shadow-2xl",
+              "fixed left-0 right-0 bottom-0 bg-card border-t border-border rounded-t-2xl shadow-2xl",
               "flex flex-col",
-              "transition-transform duration-300 ease-out",
-              isOpen ? "bottom-0 translate-y-0" : "bottom-0 translate-y-full"
+              "transition-all duration-300 ease-out",
+              isOpen ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
             )}
             style={{ 
               height: '85vh',
