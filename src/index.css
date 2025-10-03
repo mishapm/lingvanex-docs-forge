@@ -195,6 +195,11 @@
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
+  /* Scroll offset for headings to account for fixed header */
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 100px;
+  }
+
   /* Mobile optimizations */
   @media (max-width: 768px) {
     /* Improved touch targets */
