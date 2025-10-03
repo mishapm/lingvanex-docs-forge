@@ -8,6 +8,7 @@ import { useTheme } from './ThemeProvider';
 import { cn } from '@/lib/utils';
 import { Copy, Check } from 'lucide-react';
 import { ApiEndpoint } from './ApiEndpoint';
+import { TranslationCostCalculator } from './TranslationCostCalculator';
 
 interface MarkdownRendererProps {
   content: string;
@@ -74,14 +75,18 @@ function CodeBlock({ children, className, ...props }: any) {
 }
 
 export function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
-  // Process content to handle ApiEndpoint components
+  // Process content to handle ApiEndpoint and TranslationCostCalculator components
   const processContent = (text: string) => {
-    const apiEndpointRegex = /<ApiEndpoint\s+method="([^"]+)"\s+url="([^"]+)"\s*\/>/g;
+    // Match both ApiEndpoint and TranslationCostCalculator components
+    const componentRegex = /<(ApiEndpoint|TranslationCostCalculator)(?:\s+([^>]*))?\s*\/>/g;
     const parts = [];
     let lastIndex = 0;
     let match;
 
-    while ((match = apiEndpointRegex.exec(text)) !== null) {
+    while ((match = componentRegex.exec(text)) !== null) {
+      const componentType = match[1];
+      const attributes = match[2] || '';
+      
       // Add text before the match
       if (match.index > lastIndex) {
         const beforeText = text.slice(lastIndex, match.index);
@@ -99,8 +104,24 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
         }
       }
       
-      // Add the ApiEndpoint component
-      parts.push(<ApiEndpoint key={`api-${match.index}`} method={match[1]} url={match[2]} />);
+      // Add the appropriate component
+      if (componentType === 'ApiEndpoint') {
+        const methodMatch = attributes.match(/method="([^"]+)"/);
+        const urlMatch = attributes.match(/url="([^"]+)"/);
+        if (methodMatch && urlMatch) {
+          parts.push(
+            <ApiEndpoint 
+              key={`api-${match.index}`} 
+              method={methodMatch[1]} 
+              url={urlMatch[2]} 
+            />
+          );
+        }
+      } else if (componentType === 'TranslationCostCalculator') {
+        parts.push(
+          <TranslationCostCalculator key={`calc-${match.index}`} />
+        );
+      }
       
       lastIndex = match.index + match[0].length;
     }
@@ -122,7 +143,7 @@ export function MarkdownRenderer({ content, className }: MarkdownRendererProps) 
       }
     }
     
-    // If no ApiEndpoint found, return normal markdown
+    // If no components found, return normal markdown
     if (parts.length === 0) {
       return (
         <ReactMarkdown
