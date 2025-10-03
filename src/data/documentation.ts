@@ -207,9 +207,7 @@ Custom pricing for more than 500 million characters per month.
 
 When you [create the API key](/what-is-lingvanex) on the account page you receive 1$.
 
-So you can translate 200 000 characters for free.
-
-<TranslationCostCalculator />`,
+So you can translate 200 000 characters for free.`,
 
   '/faq': `# Translator Service FAQ
 
