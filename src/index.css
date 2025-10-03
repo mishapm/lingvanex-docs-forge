@@ -196,14 +196,8 @@
   }
 
   /* Scroll offset for headings to account for fixed header */
-  :root {
-    --header-height: 96px;
-  }
   h1, h2, h3, h4, h5, h6 {
-    scroll-margin-top: var(--header-height);
-  }
-  main {
-    scroll-padding-top: var(--header-height);
+    scroll-margin-top: 100px;
   }
 
   /* Mobile optimizations */

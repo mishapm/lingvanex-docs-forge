@@ -104,7 +104,7 @@ const Index = () => {
 
         {/* Content */}
         <main className="flex-1 overflow-y-auto">
-          <div className="flex max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-6 sm:pt-24 sm:pb-8 gap-8">
+          <div className="flex max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 gap-8">
             {/* Main content */}
             <div className="flex-1 min-w-0">
               <MarkdownRenderer content={currentContent} />
