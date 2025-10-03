@@ -33,13 +33,17 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
 
   useEffect(() => {
     const handleScroll = () => {
+      const header = document.querySelector('header.sticky') as HTMLElement | null;
+      const headerHeight = header?.offsetHeight ?? 0;
+      const threshold = headerHeight + 8; // little breathing room
+
       const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
       let currentActiveId = '';
 
       for (let i = 0; i < headings.length; i++) {
-        const heading = headings[i];
+        const heading = headings[i] as HTMLElement;
         const rect = heading.getBoundingClientRect();
-        if (rect.top <= 100) {
+        if (rect.top <= threshold) {
           currentActiveId = heading.id;
         }
       }
@@ -48,15 +52,23 @@ export function TableOfContents({ content, className }: TableOfContentsProps) {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initialize on mount
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToHeading = (id: string, text: string) => {
     // Find heading by text content since IDs might not match exactly
     const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const header = document.querySelector('header.sticky') as HTMLElement | null;
+    const headerHeight = header?.offsetHeight ?? 0;
+    const offset = headerHeight + 8; // slight offset so the title doesn't touch the bar
+
     for (const heading of headings) {
       if (heading.textContent?.trim() === text) {
-        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const rect = (heading as HTMLElement).getBoundingClientRect();
+        const absoluteY = window.scrollY + rect.top;
+        window.scrollTo({ top: Math.max(absoluteY - offset, 0), behavior: 'smooth' });
         break;
       }
     }
